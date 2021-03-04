@@ -17,8 +17,6 @@ const checkIfAdmin = (request, response, next) => {
   next()
 }
 
-/* application.use(checkIfAdmin) */
-
 application.get('/recipe', (request, response) => { //tar först in en url, request: här nås data om det skickas med i anropet response: skicka tillbaka data
   response.send('Ditt API anrop gick igenom!') //vi talar om vad vi vill skicka tillbaka när anropet utförs
 })
@@ -26,6 +24,14 @@ application.get('/recipe', (request, response) => { //tar först in en url, requ
 application.get('/throwdice', checkIfAdmin, (request, response) => {
   response.send(Math.random().toString())
 })
+
+const notFound = (request, response, next) => {
+  const error = new Error('invalid URL = NOT FOUND')
+  response.status(404)
+  next(error)
+}
+
+application.use(notFound) //bör ligga under anropen, det sista som körs om den inte hittar någon matchning
 
 mongoose.connect('mongodb://localhost/namndb', //namndb blir namnet på databasen som den ska koppla upp sig på, om ej hittar så skapas en sådan databas
   { useNewUrlParser: true, useUnifiedTopology: true })
