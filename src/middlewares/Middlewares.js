@@ -1,3 +1,8 @@
+import dotenv from 'dotenv'
+
+dotenv.config()
+const { ENVIRONMENT } = process.env
+
 const notFound = (request, response, next) => {
   const error = new Error('invalid URL = NOT FOUND')
   response.status(404)
@@ -10,7 +15,7 @@ const errorHandler = (error, request, response, next) => {
   response.json({
     statuscode: statuscode,
     message: error.message, //talar om vad som gick fel
-    stackTrace: error.stack
+    stackTrace: ENVIRONMENT === 'PRODUCTION' ? null : error.stack //visar endast stacktrace när vi är i developmentmode
   })
 }
 
