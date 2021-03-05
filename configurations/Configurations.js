@@ -1,8 +1,12 @@
 import mongoose from 'mongoose'
+import dotenv from 'dotenv'
+
+dotenv.config()
+const { DATABASE_URL, PORT } = process.env
 
 const connectToDatabase = async () => {
   try {
-    await mongoose.connect('mongodb://localhost/namndb', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }) //namndb blir namnet på databasen som den ska koppla upp sig på, om ej hittar så skapas en sådan databas
+    await mongoose.connect(DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }) //namndb blir namnet på databasen som den ska koppla upp sig på, om ej hittar så skapas en sådan databas
     console.log('SUCCESSFULLT CONNECTED TO DATABASE...')
   } catch (error) {
     console.log('ERROR OCCURED WHILE TRYING TO CONNECT TO THE DATABASE')
@@ -11,8 +15,8 @@ const connectToDatabase = async () => {
 }
 
 const connectToPort = (application) => {
-  application.listen(3001, () => {
-    console.log('SERVER IS RUNNING ON PORT ' + 3001)
+  application.listen(PORT, () => {
+    console.log('SERVER IS RUNNING ON PORT ' + PORT)
   })
 }
 
