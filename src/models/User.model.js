@@ -13,12 +13,12 @@ const userSchema = Schema({ //strukturera upp hur metadatan ska se ut som ska ti
     type: String,
     required: true
   },
-  age: {
-    type: Number,
-    min: [18, 'You need to be above 18'],
-    max: [123, 'You have the world record in age, please leave this site and go celebrate instead!'],
-    required: true
-  }
+  /*   age: {
+      type: Number,
+      min: [18, 'You need to be above 18'],
+      max: [123, 'You have the world record in age, please leave this site and go celebrate instead!'],
+      required: true
+    } */
 }, { timestamps: true }) //får reda på när data sparades och uppdaterades
 
 const UserModel = model('user', userSchema)

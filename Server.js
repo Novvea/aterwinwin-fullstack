@@ -3,11 +3,13 @@ import helmet from 'helmet'
 import morgan from 'morgan'
 import Middlewares from './src/middlewares/Middlewares.js'
 import Configurations from './configurations/Configurations.js'
+import UserRoutes from './src/routes/User.route.js'
 
 const application = express() //wrappar hela applikationen, kan även heta app eller server
 application.use(helmet())
 application.use(morgan('common'))
 
+UserRoutes.routes(application)
 application.use(Middlewares.notFound) //det sista som körs om den inte hittar någon matchning
 application.use(Middlewares.errorHandler)
 
