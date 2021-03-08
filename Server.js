@@ -6,6 +6,7 @@ import Configurations from './configurations/Configurations.js'
 import UserRoutes from './src/routes/User.route.js'
 
 const application = express() //wrappar hela applikationen, kan även heta app eller server
+application.use(express.json()) //istället för body-Parser
 application.use(helmet())
 application.use(morgan('common'))
 

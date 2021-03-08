@@ -1,13 +1,11 @@
 import UserModel from '../models/User.model.js'
 
-createUser = async (request, response) => {
-
+const createUser = async (request, response) => {
   const user = new UserModel({
     username: request.body.username,//ska peka på den data som skickas från servern
     password: request.body.password,
     /*     age: request.body.age */
   })
-
   try {
     const databaseResponse = await user.save()
     response.status(201).send(databaseResponse) //vi skickar tillbaka ett svar från servern, i detta fall att anropet gick som planerat
@@ -19,6 +17,16 @@ createUser = async (request, response) => {
   }
 }
 
+const getAllUsers = async (request, response) => {
+  try {
+    const databaseResponse = await UserModel.find()
+    response.status(200).send(databaseResponse) //200=anropet gick som planerat
+  } catch (error) {
+    response.status(500).send({ message: error.message }) //vill ej ha i produktion
+  }
+}
+
 export default {
-  createUser
+  createUser,
+  getAllUsers
 }
