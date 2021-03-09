@@ -69,10 +69,22 @@ const updateUser = async (request, response) => {
   }
 }
 
+const searchUsername = async (request, response) => {//söka efter användare
+  try {
+    const databaseResponse = await UserModel.find({ username: request.query.username })//kan söka med ? i urlen
+    response.status(200).send(databaseResponse)
+  } catch (error) {
+    response.status(500).send({
+      message: `Error occured while trying to retrieve user with username: ${request.query.username}`,
+      error: error.message
+    })
+  }
+}
 export default {
   createUser,
   getAllUsers,
   deleteUser,
   getUserById,
-  updateUser
+  updateUser,
+  searchUsername
 }

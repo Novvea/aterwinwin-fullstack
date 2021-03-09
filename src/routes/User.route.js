@@ -6,6 +6,7 @@ const routes = (application) => {
   application.get('/user/:userId', UserController.getUserById)
   application.delete('/user/:userId', UserController.deleteUser) //:userId pga params
   application.put('/user/:userId', UserController.updateUser)
+  application.get('/search', UserController.searchUsername)
 }
 
 export default { routes }
