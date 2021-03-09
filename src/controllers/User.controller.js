@@ -26,7 +26,21 @@ const getAllUsers = async (request, response) => {
   }
 }
 
+const deleteUser = async (request, response) => {
+  try {
+    const userId = request.params.userId
+    const databaseResponse = await UserModel.findByIdAndDelete(userId)//ska hitta en användare baserat på ida och sedan deleta
+    response.status(200).send({ message: 'Successfully deleted urser', data: databaseResponse })
+  } catch (error) {
+    response.status(500).send({
+      message: `Error while trying to delete user with ID ${userId}`
+    })
+
+  }
+}
+
 export default {
   createUser,
-  getAllUsers
+  getAllUsers,
+  deleteUser
 }
