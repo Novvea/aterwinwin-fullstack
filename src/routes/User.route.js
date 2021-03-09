@@ -5,6 +5,7 @@ const routes = (application) => {
   application.get('/user', UserController.getAllUsers) //ok att använda /user pga annan metod än ovanför
   application.get('/user/:userId', UserController.getUserById)
   application.delete('/user/:userId', UserController.deleteUser) //:userId pga params
+  application.put('/user/:userId', UserController.updateUser)
 }
 
 export default { routes }

@@ -48,6 +48,23 @@ const deleteUser = async (request, response) => {
     response.status(500).send({
       message: `Error while trying to delete user with ID ${userId}`
     })
+  }
+}
+
+const updateUser = async (request, response) => {
+  const userId = request.params.userId
+  const data = {
+    username: request.body.username,
+    password: request.body.password
+  }
+  try {
+    const databaseResponse = await UserModel.findByIdAndUpdate(userId, data, { new: true })//vilket id vill vi ändra daya på, hur ser datan ut, retunerar nya datan
+    response.status(200).send(databaseResponse)
+  } catch (error) {
+    response.status(500).send({
+      message: `Error while trying to update user with ID ${userId}`,
+      error: error.message
+    })
 
   }
 }
@@ -56,5 +73,6 @@ export default {
   createUser,
   getAllUsers,
   deleteUser,
-  getUserById
+  getUserById,
+  updateUser
 }
