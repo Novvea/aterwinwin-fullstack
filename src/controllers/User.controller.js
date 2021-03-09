@@ -28,12 +28,13 @@ const getAllUsers = async (request, response) => {
 
 const getUserById = async (request, response) => {
   try {
-    const userId = request.params.userId
-    const databaseResponse = await UserModel.findById(userId)
+    const userId = request.query.id
+    /* const userId = request.params.userId */
+    const databaseResponse = await UserModel.findById(userId) //eller bara .find?
     response.status(200).send(databaseResponse)
   } catch (error) {
     response.status(500).send({
-      message: `Error while trying to delete user with ID ${userId}`
+      message: `Error while trying to get user with ID ${userId}`
     })
 
   }
