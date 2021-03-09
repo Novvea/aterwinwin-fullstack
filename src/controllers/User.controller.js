@@ -26,6 +26,19 @@ const getAllUsers = async (request, response) => {
   }
 }
 
+const getUserById = async (request, response) => {
+  try {
+    const userId = request.params.userId
+    const databaseResponse = await UserModel.findById(userId)
+    response.status(200).send(databaseResponse)
+  } catch (error) {
+    response.status(500).send({
+      message: `Error while trying to delete user with ID ${userId}`
+    })
+
+  }
+}
+
 const deleteUser = async (request, response) => {
   try {
     const userId = request.params.userId
@@ -42,5 +55,6 @@ const deleteUser = async (request, response) => {
 export default {
   createUser,
   getAllUsers,
-  deleteUser
+  deleteUser,
+  getUserById
 }
