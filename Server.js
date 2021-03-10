@@ -1,12 +1,14 @@
 import express from 'express'
 import helmet from 'helmet'
 import morgan from 'morgan'
+import cors from 'cors'
 import Middlewares from './src/middlewares/Middlewares.js'
 import Configurations from './configurations/Configurations.js'
 import UserRoutes from './src/routes/User.route.js'
 
 const application = express() //wrappar hela applikationen, kan även heta app eller server
 application.use(express.json()) //istället för body-Parser
+application.use(cors({ credentials: true }))
 application.use(helmet())
 application.use(morgan('common'))
 
