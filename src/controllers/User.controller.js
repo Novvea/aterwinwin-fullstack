@@ -3,12 +3,13 @@ import StatusCode from '../../configurations/StatusCode.js'
 
 const createUser = async (request, response) => {
   const user = new UserModel({
-    email: request.body.email,//ska peka på den data som skickas från servern
-    firstname: request.body.firstname,//ska peka på den data som skickas från servern
+    /*     email: request.body.email,//ska peka på den data som skickas från servern */
+    firstname: request.body.firstname,
     lastname: request.body.lastname,
-    password: request.body.password,
+    password: request.body.password
     /*     age: request.body.age */
   })
+  console.log('user: ', user)
   try {
     const databaseResponse = await user.save()
     response.status(StatusCode.CREATED).send(databaseResponse) //vi skickar tillbaka ett svar från servern, i detta fall att anropet gick som planerat
