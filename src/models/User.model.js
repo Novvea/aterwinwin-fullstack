@@ -3,11 +3,23 @@ import mongoose from 'mongoose' //vår ODM
 const { Schema, model } = mongoose
 
 const userSchema = Schema({ //strukturera upp hur metadatan ska se ut som ska till databasen
-  username: { //här kan vi lägga till flera regler
+  email: { //här kan vi lägga till flera regler
     type: String,
     unique: true, //mongooses egen funktion, kollar att alla användarnamn är unika
     allowNull: false,
     required: true //anropet går inte igenom om vi inte skickar med ett användarnamn
+  },
+  firstname: {
+    type: String,
+    unique: true,
+    allowNull: false,
+    required: true
+  },
+  lastname: {
+    type: String,
+    unique: true,
+    allowNull: false,
+    required: true
   },
   password: {
     type: String,

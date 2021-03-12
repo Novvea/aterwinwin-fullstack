@@ -3,7 +3,9 @@ import StatusCode from '../../configurations/StatusCode.js'
 
 const createUser = async (request, response) => {
   const user = new UserModel({
-    username: request.body.username,//ska peka på den data som skickas från servern
+    email: request.body.email,//ska peka på den data som skickas från servern
+    firstname: request.body.firstname,//ska peka på den data som skickas från servern
+    lastname: request.body.lastname,
     password: request.body.password,
     /*     age: request.body.age */
   })
