@@ -5,6 +5,7 @@ import cors from 'cors'
 import Middlewares from './src/middlewares/Middlewares.js'
 import Configurations from './configurations/Configurations.js'
 import UserRoutes from './src/routes/User.route.js'
+import ItemRoutes from './src/routes/Item.route.js'
 
 const application = express() //wrappar hela applikationen, kan även heta app eller server
 application.use(express.json()) //istället för body-Parser
@@ -13,6 +14,7 @@ application.use(helmet())
 application.use(morgan('common'))
 
 UserRoutes.routes(application)
+ItemRoutes.routes(application)
 application.use(Middlewares.notFound) //det sista som körs om den inte hittar någon matchning
 application.use(Middlewares.errorHandler)
 
