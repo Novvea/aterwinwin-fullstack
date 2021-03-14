@@ -6,7 +6,8 @@ const addItem = async (request, response) => { //request = den data som skickas 
 
   const item = new ItemModel({
     itemname: request.body.itemname,//ska peka på den data som ska skickas till servern
-    category: request.body.category
+    category: request.body.category,
+    itemUrl: request.body.imageUrl
   })
 
   try {
@@ -30,7 +31,20 @@ const getAllItems = async (request, response) => {
   }
 }
 
+const deleteItem = async (request, response) => {
+  try {
+    const itemId = request.params.itemId
+    const databaseResponse = await ItemModel.findByIdAndDelete(itemId)//ska hitta en vara baserat på id och sedan deleta
+    response.status(200).send({ message: 'Successfully deleted item', data: databaseResponse })
+  } catch (error) {
+    response.status(500).send({
+      message: `Error while trying to delete item with ID ${itemId}`
+    })
+  }
+}
+
 export default {
   addItem,
-  getAllItems
+  getAllItems,
+  deleteItem
 }
