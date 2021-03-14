@@ -14,6 +14,9 @@ const itemSchema = Schema({
     type: String,
     allowNull: false,
     required: true
+  },
+  itemUrl: {
+    type: String
   }
 }, { timestamps: true }) // funktion i mongoose, ger timestamps när dokyument sparas och uppdateras
 
