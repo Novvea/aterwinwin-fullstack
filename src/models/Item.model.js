@@ -17,6 +17,17 @@ const itemSchema = Schema({
   },
   url: {
     type: String
+  },
+  owner: {
+    type: String,
+    allowNull: false,
+    required: true
+  },
+  interestedUsers: {
+    type: Array
+  },
+  uninterestedUsers: {
+    type: Array
   }
 }, { timestamps: true }) // funktion i mongoose, ger timestamps när dokyument sparas och uppdateras
 

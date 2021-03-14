@@ -6,6 +6,7 @@ const routes = (application) => { //här talar vi om vilken metod det är, appli
   application.post('/item', ItemController.addItem)
   application.get('/item', ItemController.getAllItems)
   application.delete('/item/:itemId', ItemController.deleteItem) //:itemId pga params
+  application.patch('/item/liked', ItemController.userLikedItem)
 }
 
 export default { routes } //skickas sedan till Server.js

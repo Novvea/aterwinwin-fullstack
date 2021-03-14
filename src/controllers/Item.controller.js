@@ -7,7 +7,10 @@ const addItem = async (request, response) => { //request = den data som skickas 
   const item = new ItemModel({
     name: request.body.name,//ska peka på den data som ska skickas till servern
     category: request.body.category,
-    url: request.body.imageUrl
+    url: request.body.url,
+    owner: request.body.owner,
+    interestedUsers: request.body.interestedUsers,
+    unInterestedUsers: request.body.unInterestedUsers
   })
 
   try {
@@ -43,8 +46,15 @@ const deleteItem = async (request, response) => {
   }
 }
 
+const userLikedItem = async (request, response) => {
+
+  const databaseResponse = await ItemModel.update() //CHANGE TO SOME KIND OF UPDATE
+
+}
+
 export default {
   addItem,
   getAllItems,
-  deleteItem
+  deleteItem,
+  userLikedItem
 }
