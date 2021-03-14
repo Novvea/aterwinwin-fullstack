@@ -5,9 +5,9 @@ import ItemModel from '../models/Item.model.js'
 const addItem = async (request, response) => { //request = den data som skickas till anropet, response är det servern svarar med
 
   const item = new ItemModel({
-    itemname: request.body.itemname,//ska peka på den data som ska skickas till servern
+    name: request.body.name,//ska peka på den data som ska skickas till servern
     category: request.body.category,
-    itemUrl: request.body.imageUrl
+    url: request.body.imageUrl
   })
 
   try {

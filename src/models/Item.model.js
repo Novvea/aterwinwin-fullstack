@@ -5,7 +5,7 @@ const { Schema } = mongoose //vi använder schema som kommer från mongoose, hä
 
 //här skapar vi ett schema, vi strukturerar upp hur metadatan som sparas i databasen ser ut och vilken data som är tillåten
 const itemSchema = Schema({
-  itemname: {
+  name: {
     type: String,
     allowNull: false, //säger att det måste vara en sträng
     required: true
@@ -15,7 +15,7 @@ const itemSchema = Schema({
     allowNull: false,
     required: true
   },
-  itemUrl: {
+  url: {
     type: String
   }
 }, { timestamps: true }) // funktion i mongoose, ger timestamps när dokyument sparas och uppdateras
