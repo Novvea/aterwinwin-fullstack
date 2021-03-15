@@ -47,9 +47,20 @@ const deleteItem = async (request, response) => {
 }
 
 const userLikedItem = async (request, response) => {
-
-  const databaseResponse = await ItemModel.update() //CHANGE TO SOME KIND OF UPDATE
-
+  const itemId = request.body.id
+  const email = request.body.email
+  try {
+    const databaseResponse = await ItemModel.findOneAndUpdate({ _id: itemId }, { $push: { interestedUsers: email } })
+    response.status(200).send({
+      message: 'Liked items array was updated',
+      data: databaseResponse
+    })
+  } catch (error) {
+    response.status(500).send({
+      message: 'Could not update liked items array',
+      stack: error
+    })
+  }
 }
 
 export default {
