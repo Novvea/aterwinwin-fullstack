@@ -21,6 +21,8 @@ application.use(Middlewares.errorHandler)
 Configurations.connectToDatabase()
 Configurations.connectToPort(application)
 
+export default application
+
 //NOTES
 //ctrl + c stänger av servern
 
