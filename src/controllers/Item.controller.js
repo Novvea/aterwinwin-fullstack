@@ -68,13 +68,25 @@ const userDislikedItem = async (request, response) => {
   const email = request.body.email
   try {
     const databaseResponse = await ItemModel.findOneAndUpdate({ _id: itemId }, { $addToSet: { uninterestedUsers: email } })
-    response.status(200).send({
-      message: 'unintrestedUsers array was updated',
-      data: databaseResponse
-    })
+    response.status(200).send(data)
   } catch (error) {
     response.status(500).send({
       message: 'Could not update unintrestedUsers array',
+      stack: error
+    })
+  }
+}
+
+const getMyItemsFromServer = async (request, response) => {
+  const userEmail = request.query.email
+  console.log('got the email of owner', userEmail)
+  console.log('request ', request)
+  try {
+    const databaseResponse = await ItemModel.find({ owner: { $eq: userEmail } })
+    response.status(200).send(databaseResponse)
+  } catch (error) {
+    response.status(500).send({
+      message: 'Could not get all uploaded items of the user',
       stack: error
     })
   }
@@ -86,4 +98,5 @@ export default {
   deleteItem,
   userLikedItem,
   userDislikedItem,
+  getMyItemsFromServer
 }

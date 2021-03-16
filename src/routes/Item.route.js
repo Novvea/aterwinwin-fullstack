@@ -8,6 +8,7 @@ const routes = (application) => { //här talar vi om vilken metod det är, appli
   application.delete('/item/:itemId', ItemController.deleteItem) //:itemId pga params
   application.patch('/item/liked', ItemController.userLikedItem)
   application.patch('/item/disliked', ItemController.userDislikedItem)
+  application.get('/items/myuploads', ItemController.getMyItemsFromServer)
 }
 
 export default { routes } //skickas sedan till Server.js
