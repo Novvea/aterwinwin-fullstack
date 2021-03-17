@@ -80,7 +80,6 @@ const userDislikedItem = async (request, response) => {
 const getMyItemsFromServer = async (request, response) => {
   const userEmail = request.query.email
   console.log('got the email of owner', userEmail)
-  console.log('request ', request)
   try {
     const databaseResponse = await ItemModel.find({ owner: { $eq: userEmail } })
     response.status(200).send(databaseResponse)
