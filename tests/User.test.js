@@ -11,7 +11,7 @@ const testingNonExistingRoute = () => {
   describe('testingNonExistingRoute', () => {
     test('HTTP call againt a route that does not exist in the API', done => {
       Chai.request(application)
-        .get('/nonexistingroute')
+        .get('/nonexistingrouteblablabla')
         .end((request, response) => {
           response.should.have.a.status(404)
           done()
