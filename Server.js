@@ -13,6 +13,10 @@ application.use(cors({ credentials: true }))
 application.use(helmet())
 application.use(morgan('common'))
 
+if (process.env.NODE_ENV === 'production') {
+  application.use(express.static('client/build'))
+}
+
 UserRoutes.routes(application)
 ItemRoutes.routes(application)
 application.use(Middlewares.notFound) //det sista som körs om den inte hittar någon matchning

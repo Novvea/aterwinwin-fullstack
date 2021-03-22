@@ -1,0 +1,48 @@
+.wrapper {
+
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemCardsContainer {
+  flex: 1;
+}
+.actionsContainer {
+/*   position: absolute;
+  top: 70%;
+  left: calc(50% - 100px); /* width of button is 200px */
+}
+
+/* .homeViewWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  grid-template-rows: 1fr 1fr 10fr;
+  justify-content: center;
+}
+
+.homeViewCategoriesWrapper {
+  display: grid;
+  grid-column: 2/3;
+  grid-row: 1/2;
+  justify-content: center;
+  align-items: center;
+}
+
+.homeViewSearchWrapper {
+  display: grid;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  justify-content: center;
+  align-items: center;
+}
+
+.homeViewItemCardsWrapper {
+  display: grid;
+  grid-column: 2/3;
+  grid-row: 3/4;
+  justify-content: center;
+  margin-bottom: 20px;
+} */

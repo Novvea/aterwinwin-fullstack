@@ -1,8 +1,11 @@
 import mongoose from 'mongoose'
-import dotenv from 'dotenv'
+//import dotenv from 'dotenv'
+//dotenv.config()
+// const { DATABASE_URL, PORT } = process.env
 
-dotenv.config()
-const { DATABASE_URL, PORT } = process.env
+const PORT = process.env.PORT || 8080
+const DATABASE_URL = process.env.MONGODB_URL || 'mongodb://localhost/aterwinwindb4'
+
 
 const connectToDatabase = async () => {
   try {

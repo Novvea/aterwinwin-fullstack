@@ -1,0 +1,27 @@
+.profileWrapper {
+  margin-right: 10px;
+/*   display: flex;
+  flex-direction: column;
+  justify-content: center */;
+}
+
+.profileImg {
+  width: 30px;
+  border-radius: 50%;
+  margin-right: 0;
+}
+
+.profileName {
+  cursor: pointer;
+  text-decoration: none; 
+  font-family: 'Rambla', sans-serif;
+  font-weight: 100;
+  font-size: 19px;
+  color: #49984C;
+  padding: 0 3px;
+}
+
+.profileWrapper:hover .profileDropDown {
+  display: block;
+} 
+

@@ -1,0 +1,46 @@
+:global(body) {
+  overflow-x: hidden;
+}
+
+.itemCardWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.itemCard {
+  position: absolute;
+  background-color: #FFF5EE;
+  border-radius: 12px;
+  box-shadow: 0px 8px 32px rgba(102, 170, 105, 0.5);
+  padding: 16px;
+  text-align: center;
+}
+
+.itemImage {
+  width: 100%;
+    height: auto;
+  border-radius: 10px;
+}
+
+.itemTitle {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.button svg {
+  width: 64px;
+  height: 64px;
+  transition: transfrom 0.2s;
+}
+
+.button:hover svg {
+  transform: scale(1.1);
+}

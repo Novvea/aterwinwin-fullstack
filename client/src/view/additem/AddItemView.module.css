@@ -1,0 +1,36 @@
+.background{
+  background-color: #FFF5EE;
+}
+
+.header, .label {
+  color: #49984C;
+}
+
+.input {
+  border: 1px solid #49984C;
+  box-sizing: border-box;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  width: 60%;
+  height: 30px;
+  color: #49984C;
+}
+
+
+.button {
+  background: #49984C;
+  border: 3px solid #49984C;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  color: #FFF5EE;
+  font-family: 'Rambla', sans-serif;
+  margin-top: 6px;
+  padding: 4px 20px;
+}
+
+.photoContainer {
+  width: 512px;
+  height: 512px;
+  border: #49984C solid 3px;
+}

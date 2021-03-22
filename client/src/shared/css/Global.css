@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  padding: 0 16px;
+  background-color: #E9FFC6;
+  font-family: 'Rambla', sans-serif;
+}
+
+.content {
+ /*  max-width: 480px; */
+  max-width: 512px;
+  margin: 0 auto;
+}
