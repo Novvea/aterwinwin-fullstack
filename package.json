@@ -9,10 +9,7 @@
   "type": "module",
   "scripts": {
     "test": "mocha 'tests/**'",
-    "start": "nodemon Server.js",
-    "build": "cd client && npm run build",
-    "install-frontend": "cd client && npm install",
-    "heroku-postbuild": "npm run install-frontend && npm run build"
+    "start": "nodemon Server.js"
   },
   "keywords": [
     "Rest API",
