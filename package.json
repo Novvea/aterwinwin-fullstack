@@ -9,7 +9,7 @@
   "type": "module",
   "scripts": {
     "test": "mocha 'tests/**'",
-    "start": "nodemon Server.js"
+    "start": "node Server.js"
   },
   "keywords": [
     "Rest API",
