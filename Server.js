@@ -2,6 +2,8 @@ import express from 'express'
 import helmet from 'helmet'
 import morgan from 'morgan'
 import cors from 'cors'
+import passport from 'passport'
+import GoogleStrategy from 'passport-google-oauth20' //osäker på var jag ska placera .Strategy
 import Middlewares from './src/middlewares/Middlewares.js'
 import Configurations from './configurations/Configurations.js'
 import UserRoutes from './src/routes/User.route.js'
@@ -16,6 +18,20 @@ application.use(morgan('common'))
 if (process.env.NODE_ENV === 'production') {
   application.use(express.static('client/build'))
 }
+
+//nytt från nodekursen
+import keys from './configurations/keys'
+passport.use(
+  new GoogleStrategy({
+    clientID: keys.googleClientID,
+    clientSecret: keys.googleClientSecret,
+    callbackURL: '/auth/google/callback'
+  }, (accessToken) => {
+    console.log(accessToken)
+  })
+)
+
+
 
 UserRoutes.routes(application)
 ItemRoutes.routes(application)
