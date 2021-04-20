@@ -2,12 +2,13 @@ import express from 'express'
 import helmet from 'helmet'
 import morgan from 'morgan'
 import cors from 'cors'
-import passport from 'passport'
-import GoogleStrategy from 'passport-google-oauth20' //osäker på var jag ska placera .Strategy
 import Middlewares from './src/middlewares/Middlewares.js'
 import Configurations from './configurations/Configurations.js'
+import AuthRoutes from './src/routes/Auth.route.js'
 import UserRoutes from './src/routes/User.route.js'
 import ItemRoutes from './src/routes/Item.route.js'
+import './src/services/Passport.js'
+
 
 const application = express() //wrappar hela applikationen, kan även heta app eller server
 application.use(express.json()) //istället för body-Parser
@@ -19,31 +20,8 @@ if (process.env.NODE_ENV === 'production') {
   application.use(express.static('client/build'))
 }
 
-//nytt från nodekursen -->
-import keys from './configurations/keys.js'
-passport.use(
-  new GoogleStrategy({
-    clientID: keys.googleClientID,
-    clientSecret: keys.googleClientSecret,
-    callbackURL: '/auth/google/callback'
-  }, (accessToken, refreshToken, profile, done) => { //now we can use this to save our user to the database
-    console.log('accessToken: ', accessToken)
-    console.log('refreshToken: ', refreshToken)
-    console.log('profile: ', profile)
-  })
-)
 
-application.get('/auth/google',
-  passport.authenticate('google', {
-    scope: ['profile', 'email'] //what access we want to have from google
-  })
-)
-
-application.get('/auth/google/callback', passport.authenticate('google'))
-
-//<-- nytt från nodekursen 
-
-
+AuthRoutes.routes(application)
 UserRoutes.routes(application)
 ItemRoutes.routes(application)
 application.use(Middlewares.notFound) //det sista som körs om den inte hittar någon matchning
