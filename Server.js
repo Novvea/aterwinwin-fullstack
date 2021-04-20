@@ -16,9 +16,9 @@ application.use(cors({ credentials: true }))
 application.use(helmet())
 application.use(morgan('common'))
 
-if (process.env.NODE_ENV === 'production') {
-  application.use(express.static('client/build'))
-}
+//if (process.env.NODE_ENV === 'production') {
+//  application.use(express.static('client/build'))
+//}
 
 
 AuthRoutes.routes(application)

@@ -1,16 +1,15 @@
 import mongoose from 'mongoose'
+import keys from './keys.js'
 //import dotenv from 'dotenv'
 //dotenv.config()
 // const { DATABASE_URL, PORT } = process.env
 
 const PORT = process.env.PORT || 5000
-const DATABASE_URL = process.env.MONGODB_URL || 'mongodb://localhost/aterwinwindb4'
-
+//const DATABASE_URL = process.env.MONGODB_URL || 'mongodb://localhost/aterwinwindb4'
 
 const connectToDatabase = async () => {
   try {
-    await mongoose.connect(DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }) //namndb blir namnet på databasen som den ska koppla upp sig på, om ej hittar så skapas en sådan databas
-    console.log('SUCCESSFULLT CONNECTED TO DATABASE...')
+    await mongoose.connect(keys.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
   } catch (error) {
     console.log('ERROR OCCURED WHILE TRYING TO CONNECT TO THE DATABASE')
     process.exit()
