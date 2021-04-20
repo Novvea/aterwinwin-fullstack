@@ -19,18 +19,29 @@ if (process.env.NODE_ENV === 'production') {
   application.use(express.static('client/build'))
 }
 
-//nytt från nodekursen
-import keys from './configurations/keys'
+//nytt från nodekursen -->
+import keys from './configurations/keys.js'
 passport.use(
   new GoogleStrategy({
     clientID: keys.googleClientID,
     clientSecret: keys.googleClientSecret,
     callbackURL: '/auth/google/callback'
-  }, (accessToken) => {
-    console.log(accessToken)
+  }, (accessToken, refreshToken, profile, done) => { //now we can use this to save our user to the database
+    console.log('accessToken: ', accessToken)
+    console.log('refreshToken: ', refreshToken)
+    console.log('profile: ', profile)
   })
 )
 
+application.get('/auth/google',
+  passport.authenticate('google', {
+    scope: ['profile', 'email'] //what access we want to have from google
+  })
+)
+
+application.get('/auth/google/callback', passport.authenticate('google'))
+
+//<-- nytt från nodekursen 
 
 
 UserRoutes.routes(application)
