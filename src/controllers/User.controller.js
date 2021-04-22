@@ -1,13 +1,12 @@
-import UserModel from '../models/User.model.js'
+import UserModel2 from '../models/User.model.js'
 import StatusCode from '../../configurations/StatusCode.js'
 
 const createUser = async (request, response) => {
-  const user = new UserModel({
-    email: request.body.email,//ska peka på den data som skickas från servern 
+  const user = new UserModel2({
+    email: request.body.email,//ska peka på den data som skickas från servern
     firstname: request.body.firstname,
     lastname: request.body.lastname,
     password: request.body.password
-    /*     age: request.body.age */
   })
   try {
     const databaseResponse = await user.save()
@@ -22,7 +21,7 @@ const createUser = async (request, response) => {
 
 const getAllUsers = async (request, response) => {
   try {
-    const databaseResponse = await UserModel.find()
+    const databaseResponse = await UserModel2.find()
     response.status(StatusCode.OK).send(databaseResponse) //200=anropet gick som planerat
   } catch (error) {
     response.status(StatusCode.INTERNAL_SERVER_ERROR).send({ message: error.message }) //vill ej ha i produktion
@@ -32,8 +31,8 @@ const getAllUsers = async (request, response) => {
 const getUserById = async (request, response) => {
   try {
     const userId = request.query.id
-    /* const userId = request.params.userId */
-    const databaseResponse = await UserModel.findById(userId) //eller bara .find?
+    // const userId = request.params.userId
+    const databaseResponse = await UserModel2.findById(userId) //eller bara .find?
     response.status(StatusCode.OK).send(databaseResponse)
   } catch (error) {
     response.status(StatusCode.INTERNAL_SERVER_ERROR).send({
@@ -46,7 +45,7 @@ const getUserById = async (request, response) => {
 const deleteUser = async (request, response) => {
   try {
     const userId = request.params.userId
-    const databaseResponse = await UserModel.findByIdAndDelete(userId)//ska hitta en användare baserat på ida och sedan deleta
+    const databaseResponse = await UserModel2.findByIdAndDelete(userId)//ska hitta en användare baserat på ida och sedan deleta
     response.status(StatusCode.OK).send({ message: 'Successfully deleted urser', data: databaseResponse })
   } catch (error) {
     response.status(StatusCode.INTERNAL_SERVER_ERROR).send({
@@ -62,7 +61,7 @@ const updateUser = async (request, response) => {
     password: request.body.password
   }
   try {
-    const databaseResponse = await UserModel.findByIdAndUpdate(userId, data, { new: true })//vilket id vill vi ändra daya på, hur ser datan ut, retunerar nya datan
+    const databaseResponse = await UserModel2.findByIdAndUpdate(userId, data, { new: true })//vilket id vill vi ändra daya på, hur ser datan ut, retunerar nya datan
     response.status(StatusCode.OK).send(databaseResponse)
   } catch (error) {
     response.status(StatusCode.INTERNAL_SERVER_ERROR).send({
@@ -75,7 +74,7 @@ const updateUser = async (request, response) => {
 
 const searchUsername = async (request, response) => {//söka efter användare
   try {
-    const databaseResponse = await UserModel.find({ username: request.query.username })//kan söka med ? i urlen
+    const databaseResponse = await UserModel2.find({ username: request.query.username })//kan söka med ? i urlen
     response.status(StatusCode.OK).send(databaseResponse)
   } catch (error) {
     response.status(StatusCode.INTERNAL_SERVER_ERROR).send({
