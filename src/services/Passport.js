@@ -3,7 +3,7 @@ import { Strategy as GoogleStrategy } from 'passport-google-oauth20' //osäker p
 import mongoose from 'mongoose'
 import keys from '../../configurations/keys.js'
 
-const User = mongoose.model('users')
+const User = mongoose.model('users') //user-class declaration
 
 passport.use(
   new GoogleStrategy({
@@ -11,6 +11,16 @@ passport.use(
     clientSecret: keys.googleClientSecret,
     callbackURL: '/auth/google/callback'
   }, (accessToken, refreshToken, profile, done) => { //now we can use this to save our user to the database
-    new User({ googleId: profile.id })
-  })
+    User.findOne({ googleId: profile.id })
+      .then((existingUser) => {
+        if (existingUser) {
+          done(null, existingUser)
+        } else {
+          new User({ googleId: profile.id })
+            .save()
+            .then(user => done(null, user))
+        }
+      })
+  }
+  )
 )
