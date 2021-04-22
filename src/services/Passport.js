@@ -5,6 +5,10 @@ import keys from '../../configurations/keys.js'
 
 const User = mongoose.model('users') //user-class declaration
 
+passport.serializeUser((user, done) => {
+  done(null, user.id) //id created by mongodb, not the profile-id
+})
+
 passport.use(
   new GoogleStrategy({
     clientID: keys.googleClientID,
