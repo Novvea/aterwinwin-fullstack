@@ -1,11 +1,7 @@
 import mongoose from 'mongoose'
 import keys from './keys.js'
-//import dotenv from 'dotenv'
-//dotenv.config()
-// const { DATABASE_URL, PORT } = process.env
 
 const PORT = process.env.PORT || 5000
-//const DATABASE_URL = process.env.MONGODB_URL || 'mongodb://localhost/aterwinwindb4'
 
 const connectToDatabase = async () => {
   try {
@@ -27,6 +23,9 @@ export default {
   connectToPort
 }
 
+//import dotenv from 'dotenv'
+//dotenv.config()
+// const { DATABASE_URL, PORT } = process.env
 
 /* mongoose.connect('mongodb://localhost/namndb',
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
