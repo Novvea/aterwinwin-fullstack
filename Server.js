@@ -10,6 +10,7 @@ import AuthRoutes from './src/routes/Auth.route.js'
 import UserRoutes from './src/routes/User.route.js'
 import ItemRoutes from './src/routes/Item.route.js'
 import keys from './configurations/keys.js'
+import './src/services/Passport.js' //does not work without this line
 
 //mongoose.connect ligger i Configurations.js
 
