@@ -115,3 +115,4 @@ dist
 .DS_Store
 /*.env
 keys.js
+dev.js
