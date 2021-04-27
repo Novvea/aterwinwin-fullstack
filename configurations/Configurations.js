@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import keys from './keys.js'
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000 //env variable set up by Heroku
 
 const connectToDatabase = async () => {
   try {
