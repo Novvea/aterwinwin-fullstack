@@ -17,8 +17,8 @@ import './src/services/Passport.js' //does not work without this line
 const application = express() //wrappar hela applikationen, kan även heta app eller server
 application.use(express.json()) //istället för body-Parser
 application.use(cors({ credentials: true }))
-application.use(helmet())
-application.use(morgan('common'))
+application.use(helmet())//döljer viss data
+application.use(morgan('common')) //ger oss info hur och vem som gjort anropet
 
 application.use(cookieSession({
   maxAge: 30 * 24 * 60 * 60 * 1000, //=30 days
