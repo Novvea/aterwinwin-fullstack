@@ -1,8 +1,6 @@
-import dotenv from 'dotenv'
-import StatusCode from '../../configurations/StatusCode.js'
+const StatusCode = require('../../configurations/StatusCode')
 
-dotenv.config()
-const { ENVIRONMENT } = process.env
+const { NODE_ENV } = process.env
 
 const notFound = (request, response, next) => {
   const error = new Error('invalid URL = NOT FOUND')
@@ -16,11 +14,11 @@ const errorHandler = (error, request, response, next) => {
   response.json({
     statuscode: statuscode,
     message: error.message, //talar om vad som gick fel
-    stackTrace: ENVIRONMENT === 'PRODUCTION' ? null : error.stack //visar endast stacktrace när vi är i developmentmode
+    stackTrace: NODE_ENV === 'production' ? null : error.stack //visar endast stacktrace när vi är i developmentmode
   })
 }
 
-export default {
+module.exports = {
   notFound,
   errorHandler
 }

@@ -17,7 +17,7 @@ const DUBLICATE_RESOURCE = 409
 //5xx server error - the server failed to fulfil an apparently valid request
 const INTERNAL_SERVER_ERROR = 500
 
-export default {
+module.exports = {
   OK,
   CREATED,
   BAD_REQUEST,

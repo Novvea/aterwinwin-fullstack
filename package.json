@@ -6,7 +6,7 @@
     "node": "14.x"
   },
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "test": "mocha 'tests/**'",
     "start": "node Server.js",

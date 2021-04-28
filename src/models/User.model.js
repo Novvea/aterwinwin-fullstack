@@ -1,4 +1,4 @@
-import mongoose from 'mongoose' //vår ODM
+const mongoose = require('mongoose') //vår ODM
 
 const { Schema } = mongoose
 
@@ -35,4 +35,4 @@ const userSchema2 = Schema({ //strukturera upp hur metadatan ska se ut som ska t
 }, { timestamps: true }) //får reda på när data sparades och uppdaterades
 
 const UserModel2 = mongoose.model('user', userSchema2) //This creates our model class
-export default UserModel2
+module.exports = UserModel2

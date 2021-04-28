@@ -1,4 +1,4 @@
-import UserController from '../controllers/User.controller.js'
+const UserController = require('../controllers/User.controller')
 
 const routes = (application) => {
   application.post('/user', UserController.createUser)
@@ -9,4 +9,4 @@ const routes = (application) => {
   application.get('/search', UserController.searchUsername)
 }
 
-export default { routes }
+module.exports = { routes }

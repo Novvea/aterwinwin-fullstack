@@ -1,5 +1,5 @@
 //här skriver vi logiken som talar om vad som händer när vi gör ett anrop
-import ItemModel from '../models/Item.model.js'
+const ItemModel = require('../models/Item.model')
 
 //async await pga att mongoose måste koppla upp sig tyill databasen, vi väntar tills processen är färdig innan vi gör något annat
 const addItem = async (request, response) => { //request = den data som skickas till anropet, response är det servern svarar med
@@ -91,7 +91,7 @@ const getMyItemsFromServer = async (request, response) => {
   }
 }
 
-export default {
+module.exports = {
   addItem,
   getAllItems,
   deleteItem,

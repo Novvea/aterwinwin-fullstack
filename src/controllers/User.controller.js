@@ -1,5 +1,5 @@
-import UserModel2 from '../models/User.model.js'
-import StatusCode from '../../configurations/StatusCode.js'
+const UserModel2 = require('../models/User.model')
+const StatusCode = require('../../configurations/StatusCode')
 
 const createUser = async (request, response) => {
   const user = new UserModel2({
@@ -83,7 +83,7 @@ const searchUsername = async (request, response) => {//söka efter användare
     })
   }
 }
-export default {
+module.exports = {
   createUser,
   getAllUsers,
   deleteUser,

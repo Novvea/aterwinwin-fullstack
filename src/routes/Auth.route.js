@@ -1,4 +1,4 @@
-import passport from 'passport'
+const passport = require('passport')
 
 const routes = (application) => {
   application.get('/auth/google',
@@ -20,4 +20,4 @@ const routes = (application) => {
 
 }
 
-export default { routes }
+module.exports = { routes }

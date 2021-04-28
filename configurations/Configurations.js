@@ -1,5 +1,5 @@
-import mongoose from 'mongoose'
-import keys from './keys.js'
+const mongoose = require('mongoose')
+const keys = require('./keys')
 
 const PORT = process.env.PORT || 5000 //env variable set up by Heroku
 
@@ -18,7 +18,7 @@ const connectToPort = (application) => {
   })
 }
 
-export default {
+module.exports = {
   connectToDatabase,
   connectToPort
 }
