@@ -1,8 +1,8 @@
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div>
         <ul>
           <li>
@@ -34,7 +34,7 @@ function App() {
           </Route>
         </Switch>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 
