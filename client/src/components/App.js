@@ -1,5 +1,9 @@
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
+const homeView = () => <h1>Homeview</h1>;
+const aboutView = () => <h1>Om</h1>;
+const signUpView = () => <h1>Sign Up</h1>;
+
 function App() {
   return (
     <BrowserRouter>
@@ -19,19 +23,9 @@ function App() {
           </li>
         </ul>
         <Switch>
-          <Route exact path="/">
-            <p>Hem</p>
-            <a href="/auth/google">Logga in med google 2</a>
-          </Route>
-          <Route path="/om">
-            <p>Om</p>
-          </Route>
-          <Route path="/signup">
-            <p>Skapa konto</p>
-          </Route>
-          <Route path="/login">
-            <p>Logga in bara vanligt</p>
-          </Route>
+          <Route exact path="/" component={homeView} />
+          <Route path="/om" component={aboutView} />
+          <Route path="/signup" component={signUpView} />
         </Switch>
       </div>
     </BrowserRouter>
