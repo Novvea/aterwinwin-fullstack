@@ -1,10 +1,17 @@
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 const homeView = () => <h1>Homeview</h1>;
 const aboutView = () => <h1>Om</h1>;
 const signUpView = () => <h1>Sign Up</h1>;
 
-function App() {
+const App = () => {
+  useEffect(() => {
+    actions.fetchUser();
+  }, []);
+
   return (
     <BrowserRouter>
       <div>
@@ -30,6 +37,6 @@ function App() {
       </div>
     </BrowserRouter>
   );
-}
+};
 
-export default App;
+export default connect(null, actions)(App);
