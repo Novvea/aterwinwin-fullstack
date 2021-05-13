@@ -1,23 +1,29 @@
-const passport = require('passport')
+const passport = require('passport');
 
 const routes = (application) => {
-  application.get('/auth/google',
+  application.get(
+    '/auth/google',
     passport.authenticate('google', {
-      scope: ['profile', 'email'] //what access we want to have from google
+      scope: ['profile', 'email'], //what access we want to have from google
     })
-  )
+  );
 
-  application.get('/auth/google/callback', passport.authenticate('google'))
+  application.get(
+    '/auth/google/callback',
+    passport.authenticate('google'),
+    (request, response) => {
+      response.redirect('/om');
+    }
+  );
 
   application.get('/api/logout', (request, response) => {
-    request.logout()
-    response.send(request.user)
-  })
+    request.logout();
+    response.send(request.user);
+  });
 
   application.get('/api/current_user', (request, response) => {
-    response.send(request.user)
-  })
+    response.send(request.user);
+  });
+};
 
-}
-
-module.exports = { routes }
+module.exports = { routes };
