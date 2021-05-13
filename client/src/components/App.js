@@ -2,6 +2,7 @@ import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchUser } from '../actions';
+import Header from './Header';
 
 const homeView = () => <h1>Homeview</h1>;
 const aboutView = () => <h1>Om</h1>;
@@ -32,6 +33,7 @@ const App = () => {
           </li>
         </ul>
         <Switch>
+          <Header />
           <Route exact path="/" component={homeView} />
           <Route path="/om" component={aboutView} />
           <Route path="/signup" component={signUpView} />
