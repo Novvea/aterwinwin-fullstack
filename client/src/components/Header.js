@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   //const dispatch = useDispatch();
@@ -27,10 +28,9 @@ const Header = () => {
 
   return (
     <nav>
-      <a>This is the Header</a>
+      <Link to={auth ? '/om' : '/signup'}>This is the Header</Link>
       <ul>
         <li>
-          {/* <a>Login With Google</a> */}
           <RenderContent value={auth} />
         </li>
       </ul>
