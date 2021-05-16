@@ -5,6 +5,7 @@ const routes = (application) => {
     '/auth/google',
     passport.authenticate('google', {
       scope: ['profile', 'email'], //what access we want to have from google
+      prompt: 'select_account',
     })
   );
 
