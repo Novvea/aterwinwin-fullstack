@@ -19,7 +19,7 @@ const routes = (application) => {
 
   application.get('/api/logout', (request, response) => {
     request.logout();
-    response.send(request.user);
+    response.redirect('/');
   });
 
   application.get('/api/current_user', (request, response) => {
