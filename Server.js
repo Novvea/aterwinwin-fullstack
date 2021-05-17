@@ -33,6 +33,16 @@ application.use(passport.session());
 AuthRoutes.routes(application);
 UserRoutes.routes(application);
 ItemRoutes.routes(application);
+
+if (process.env.NODE_ENV === 'production') {
+  application.use(express.static('client/build'));
+
+  const path = require('path');
+  application.get('*', (request, response) => {
+    response.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
+
 application.use(Middlewares.notFound); //det sista som körs om den inte hittar någon matchning
 application.use(Middlewares.errorHandler);
 
