@@ -7,25 +7,6 @@ const Header = () => {
   const auth = useSelector((state) => state.auth);
   console.log('auth: ', auth);
 
-  function RenderContent(props) {
-    switch (props.value) {
-      case null:
-        return null; //BORDE FIXA DETTA!!!
-      case false:
-        return (
-          <li>
-            <a href="/auth/google">Login with Google</a>
-          </li>
-        );
-      default:
-        return (
-          <li>
-            <a href="/api/logout">Logout</a>
-          </li>
-        );
-    }
-  }
-
   return (
     <nav>
       <Link to={auth ? '/om' : '/signup'}>This is the Header</Link>
@@ -40,10 +21,6 @@ const Header = () => {
             <a href="/api/logout">Logout</a>
           </li>
         )}
-
-        <li>
-          <RenderContent value={auth} />
-        </li>
       </ul>
     </nav>
   );
