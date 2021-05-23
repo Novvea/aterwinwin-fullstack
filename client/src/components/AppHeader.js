@@ -8,21 +8,23 @@ const Header = () => {
   console.log('auth: ', auth);
 
   return (
-    <nav>
-      <Link to={auth ? '/om' : '/signup'}>This is the Header</Link>
-      <ul>
-        {!auth && (
-          <li>
-            <a href="/auth/google">Login with Google</a>
-          </li>
-        )}
-        {auth && (
-          <li>
-            <a href="/api/logout">Logout</a>
-          </li>
-        )}
-      </ul>
-    </nav>
+    <header>
+      <nav>
+        <Link to={'/'}>LOGO</Link>
+        <ul>
+          {!auth && (
+            <li>
+              <a href="/auth/google">Login with Google</a>
+            </li>
+          )}
+          {auth && (
+            <li>
+              <a href="/api/logout">Logout</a>
+            </li>
+          )}
+        </ul>
+      </nav>
+    </header>
   );
 };
 
