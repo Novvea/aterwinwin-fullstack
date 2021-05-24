@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+const AppHeader = () => {
   //const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   console.log('auth: ', auth);
@@ -28,4 +27,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default AppHeader;
