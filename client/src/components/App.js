@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchUser } from '../actions';
 import { Routes } from '../routes/Routes';
+import '../shared/css/Global.css';
 import AppHeader from './AppHeader';
 import AppFooter from './AppFooter';
 
