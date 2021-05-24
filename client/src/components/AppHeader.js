@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import RoutingPath from '../routes/RoutingPath';
 
 const AppHeader = () => {
   //const dispatch = useDispatch();
@@ -9,19 +10,26 @@ const AppHeader = () => {
   return (
     <header>
       <nav>
-        <Link to={'/'}>LOGO</Link>
-        <ul>
-          {!auth && (
+        <Link to={RoutingPath.homeView}>LOGO</Link>
+        {!auth && (
+          <ul>
             <li>
-              <a href="/auth/google">Login with Google</a>
+              <Link to={RoutingPath.loginView}>Logga in</Link>
             </li>
-          )}
-          {auth && (
             <li>
-              <a href="/api/logout">Logout</a>
+              <Link to={RoutingPath.registerView}> Registrera dig</Link>
             </li>
-          )}
-        </ul>
+          </ul>
+        )}
+        {auth && (
+          <ul>
+            <li>
+              <Link to={RoutingPath.profileView}>
+                Användare med google id: {auth.googleId}
+              </Link>
+            </li>
+          </ul>
+        )}
       </nav>
     </header>
   );
