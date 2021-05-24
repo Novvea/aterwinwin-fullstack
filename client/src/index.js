@@ -12,6 +12,8 @@ const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+      {' '}
+      {/* The whole app can now access the store */}
       <App />
     </Provider>
   </React.StrictMode>,
