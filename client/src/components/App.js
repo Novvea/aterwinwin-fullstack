@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchUser } from '../actions';
-import AppHeader from './AppHeader';
 import { Routes } from '../routes/Routes';
+import AppHeader from './AppHeader';
+import AppFooter from './AppFooter';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const App = () => {
     <div>
       <Routes>
         <AppHeader />
+        <AppFooter />
       </Routes>
     </div>
   );
