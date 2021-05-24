@@ -1,3 +1,5 @@
+// An action describes what we want to do, returns an object
+
 import axios from 'axios';
 import { FETCH_USER } from './types';
 
