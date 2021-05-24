@@ -1,27 +1,31 @@
-const mongoose = require('mongoose')
-const keys = require('./keys')
+const mongoose = require('mongoose');
+const keys = require('./keys');
 
-const PORT = process.env.PORT || 5000 //env variable set up by Heroku
+const PORT = process.env.PORT || 5000; //env variable set up by Heroku
 
 const connectToDatabase = async () => {
   try {
-    await mongoose.connect(keys.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+    await mongoose.connect(keys.mongoURI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+    });
   } catch (error) {
-    console.log('ERROR OCCURED WHILE TRYING TO CONNECT TO THE DATABASE')
-    process.exit()
+    console.log('ERROR OCCURED WHILE TRYING TO CONNECT TO THE DATABASE');
+    process.exit();
   }
-}
+};
 
-const connectToPort = (application) => {
-  application.listen(PORT, () => {
-    console.log('SERVER IS RUNNING ON PORT ' + PORT)
-  })
-}
+const connectToPort = (app) => {
+  app.listen(PORT, () => {
+    console.log('SERVER IS RUNNING ON PORT ' + PORT);
+  });
+};
 
 module.exports = {
   connectToDatabase,
-  connectToPort
-}
+  connectToPort,
+};
 
 //import dotenv from 'dotenv'
 //dotenv.config()
@@ -36,6 +40,6 @@ module.exports = {
   })
 
 //logiken för att starta vår server på en port (3000 är default, men samma som react):
-application.listen(3001, () => {
+app.listen(3001, () => {
   console.log('Servern är igång på port ' + 3001)
 }) */

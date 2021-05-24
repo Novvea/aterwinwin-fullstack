@@ -14,39 +14,39 @@ require('./src/services/Passport'); //does not work without this line
 
 //mongoose.connect ligger i Configurations.js
 
-const application = express(); //wrappar hela applikationen, kan även heta app eller server
-application.use(express.json()); //istället för body-Parser
-application.use(cors({ credentials: true }));
-application.use(helmet()); //döljer viss data
-application.use(morgan('common')); //ger oss info hur och vem som gjort anropet
+const app = express(); //wrappar hela applikationen, kan även heta app eller server
+app.use(express.json()); //istället för body-Parser
+app.use(cors({ credentials: true }));
+app.use(helmet()); //döljer viss data
+app.use(morgan('common')); //ger oss info hur och vem som gjort anropet
 
-//application.use(bodyParser.json()); //lades till vid betalningsavsnittet
-application.use(
+//app.use(bodyParser.json()); //lades till vid betalningsavsnittet
+app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000, //=30 days
     keys: [keys.cookieKey],
   })
 );
-application.use(passport.initialize());
-application.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
-AuthRoutes.routes(application);
-UserRoutes.routes(application);
-ItemRoutes.routes(application);
+AuthRoutes.routes(app);
+UserRoutes.routes(app);
+ItemRoutes.routes(app);
 
 if (process.env.NODE_ENV === 'production') {
-  application.use(express.static('client/build'));
+  app.use(express.static('client/build'));
 
   const path = require('path');
-  application.get('*', (request, response) => {
+  app.get('*', (request, response) => {
     response.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
 
-application.use(Middlewares.notFound); //det sista som körs om den inte hittar någon matchning
-application.use(Middlewares.errorHandler);
+app.use(Middlewares.notFound); //det sista som körs om den inte hittar någon matchning
+app.use(Middlewares.errorHandler);
 
 Configurations.connectToDatabase();
-Configurations.connectToPort(application);
+Configurations.connectToPort(app);
 
-//export default application
+//export default app
