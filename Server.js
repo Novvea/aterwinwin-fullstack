@@ -14,7 +14,7 @@ require('./src/services/Passport'); //does not work without this line
 
 //mongoose.connect ligger i Configurations.js
 
-const app = express(); //wrappar hela applikationen, kan även heta app eller server
+const app = express(); //wrappar hela applikationen, kan även heta application eller server
 app.use(express.json()); //istället för body-Parser
 app.use(cors({ credentials: true }));
 app.use(helmet()); //döljer viss data
