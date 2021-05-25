@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import RoutingPath from '../routes/RoutingPath';
+import RoutingPath from '../../routes/RoutingPath';
 
 const Footer = () => {
   return (

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import RoutingPath from '../routes/RoutingPath';
+import RoutingPath from '../../routes/RoutingPath';
 
 const AppHeader = () => {
   //const dispatch = useDispatch();
