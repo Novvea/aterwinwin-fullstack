@@ -48,5 +48,3 @@ app.use(Middlewares.errorHandler);
 
 Configurations.connectToDatabase();
 Configurations.connectToPort(app);
-
-//export default app
