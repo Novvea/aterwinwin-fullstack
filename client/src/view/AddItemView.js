@@ -35,12 +35,12 @@ export const AddItemView = () => {
 
   const addNewItem = async () => {
     setAddItemFormData({ ...addItemFormData, _user: auth._id });
-    if (addItemFormData._user) {
+    if (addItemFormData) {
       console.log('we should have an owner with _id: ', addItemFormData._user);
       try {
         await BackendAPIService.addItem(addItemFormData);
         console.log('Item was added');
-        console.log('data: ', addItemFormData);
+        //console.log('data: ', addItemFormData);
       } catch (error) {
         console.log('errormessage: ', error);
       }
