@@ -1,4 +1,4 @@
-const StatusCode = require('../../configurations/StatusCode');
+const StatusCode = require('../../configurations/statusCode');
 
 const { NODE_ENV } = process.env;
 

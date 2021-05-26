@@ -4,13 +4,13 @@ const morgan = require('morgan');
 const cors = require('cors');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
-const Middlewares = require('./src/middlewares/Middlewares');
-const Configurations = require('./configurations/Configurations');
-const AuthRoutes = require('./src/routes/Auth.route');
-const UserRoutes = require('./src/routes/User.route');
-const ItemRoutes = require('./src/routes/Item.route');
+const Middlewares = require('./src/middlewares/middlewares');
+const Configurations = require('./configurations/configurations');
+const AuthRoutes = require('./src/routes/auth.route');
+const UserRoutes = require('./src/routes/user.route');
+const ItemRoutes = require('./src/routes/item.route');
 const keys = require('./configurations/keys');
-require('./src/services/Passport'); //does not work without this line
+require('./src/services/passport'); //does not work without this line
 
 //mongoose.connect ligger i Configurations.js
 

@@ -9,8 +9,8 @@
   "type": "commonjs",
   "scripts": {
     "test": "mocha 'tests/**'",
-    "start": "node Server.js",
-    "server": "nodemon Server.js",
+    "start": "node server.js",
+    "server": "nodemon server.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "prepare": "husky install"
