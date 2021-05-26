@@ -22,11 +22,9 @@ const itemSchema = new Schema(
     url: {
       type: String,
     },
-    _owner: {
+    _user: {
       type: Schema.Types.ObjectId,
-      ref: 'User', //connects to the User Schema
-      allowNull: false,
-      required: true,
+      ref: 'AuthUser', //connects to the User Schema
     },
     interestedUsers: {
       type: Array,
