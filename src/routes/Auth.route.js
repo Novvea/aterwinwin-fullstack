@@ -1,7 +1,7 @@
 const passport = require('passport');
 
-const routes = (application) => {
-  application.get(
+const routes = (app) => {
+  app.get(
     '/auth/google',
     passport.authenticate('google', {
       scope: ['profile', 'email'], //what access we want to have from google
@@ -9,20 +9,20 @@ const routes = (application) => {
     })
   );
 
-  application.get(
+  app.get(
     '/auth/google/callback',
     passport.authenticate('google'),
     (request, response) => {
-      response.redirect('/om');
+      response.redirect('/');
     }
   );
 
-  application.get('/api/logout', (request, response) => {
+  app.get('/api/logout', (request, response) => {
     request.logout();
     response.redirect('/');
   });
 
-  application.get('/api/current_user', (request, response) => {
+  app.get('/api/current_user', (request, response) => {
     response.send(request.user);
   });
 };

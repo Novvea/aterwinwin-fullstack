@@ -8,13 +8,13 @@ const itemSchema = new Schema(
   {
     name: {
       type: String,
-      allowNull: false, //säger att det måste vara en sträng
-      required: true,
+      /*       allowNull: false, //säger att det måste vara en sträng
+      required: true, */
     },
     category: {
       type: String,
-      allowNull: false,
-      required: true,
+      /*       allowNull: false,
+      required: true, */
     },
     position: {
       type: String,
@@ -23,8 +23,9 @@ const itemSchema = new Schema(
       type: String,
     },
     _user: {
-      type: Schema.Types.ObjectId,
-      ref: 'User', //connects to the User Schema
+      type: String,
+      /*       type: Schema.Types.ObjectId,
+      ref: 'AuthUser', //connects to the User Schema */
     },
     interestedUsers: {
       type: Array,

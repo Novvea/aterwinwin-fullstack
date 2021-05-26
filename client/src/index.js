@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 
-import App from './components/App';
+import App from './App';
 import reducers from './reducers';
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
@@ -12,6 +12,8 @@ const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+      {' '}
+      {/* The whole app can now access the store */}
       <App />
     </Provider>
   </React.StrictMode>,
