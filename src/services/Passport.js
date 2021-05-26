@@ -3,14 +3,14 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose');
 const keys = require('../../configurations/keys');
 
-const User = mongoose.model('users'); //user-class declaration
+const AuthUser = mongoose.model('authuser'); //user-class declaration
 
 passport.serializeUser((user, done) => {
   done(null, user.id); //id created by mongodb, not the profile-id
 });
 
 passport.deserializeUser((id, done) => {
-  User.findById(id).then((user) => {
+  AuthUser.findById(id).then((user) => {
     done(null, user);
   });
 });
@@ -25,12 +25,12 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       //now we can use this to save our user to the database
-      const existingUser = await User.findOne({ googleId: profile.id });
+      const existingUser = await AuthUser.findOne({ googleId: profile.id });
       if (existingUser) {
         return done(null, existingUser);
       }
-      const user = await new User({ googleId: profile.id }).save();
-      done(null, user);
+      const authuser = await new AuthUser({ googleId: profile.id }).save();
+      done(null, authuser);
     }
   )
 );
