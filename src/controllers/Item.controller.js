@@ -29,7 +29,7 @@ const getAllItems = async (request, response) => {
   const { user } = request.query;
 
   const filters = {
-    _user: user,
+    ...(user && { _user: user }),
   };
 
   try {
