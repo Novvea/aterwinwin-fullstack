@@ -9,7 +9,7 @@ const addItem = async (request, response) => {
     category: request.body.category,
     position: request.body.position,
     url: request.body.url,
-    _user: request.body.id, //the id comes from mongoose and mongodb
+    _user: request.body._user, //the id comes from mongoose and mongodb
     interestedUsers: request.body.interestedUsers,
     unInterestedUsers: request.body.unInterestedUsers,
   });
@@ -26,8 +26,14 @@ const addItem = async (request, response) => {
 };
 
 const getAllItems = async (request, response) => {
+  const { user } = request.query;
+
+  const filters = {
+    _user: user,
+  };
+
   try {
-    const databaseResponse = await ItemModel.find();
+    const databaseResponse = await ItemModel.find({ ...filters });
     response.status(200).send(databaseResponse);
   } catch (error) {
     response.status(500).send({
@@ -87,27 +93,11 @@ const userDislikedItem = async (request, response) => {
   }
 };
 
-const getMyItemsFromServer = async (request, response) => {
-  const userEmail = request.query.email;
-  console.log('got the email of owner', userEmail);
-  try {
-    const databaseResponse = await ItemModel.find({
-      owner: { $eq: userEmail },
-    });
-    response.status(200).send(databaseResponse);
-  } catch (error) {
-    response.status(500).send({
-      message: 'Could not get all uploaded items of the user',
-      stack: error,
-    });
-  }
-};
-
 module.exports = {
   addItem,
   getAllItems,
   deleteItem,
   userLikedItem,
   userDislikedItem,
-  getMyItemsFromServer,
+  //getItemsByUser,
 };

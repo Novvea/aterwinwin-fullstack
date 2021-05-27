@@ -12,7 +12,6 @@ export const AddItemView = () => {
     category: '',
     position: '',
     url: '',
-    _user: '',
     interestedUsers: [],
     uninterestedUsers: [],
   });
@@ -34,11 +33,13 @@ export const AddItemView = () => {
   console.log('addItemFormData: ', addItemFormData);
 
   const addNewItem = async () => {
-    setAddItemFormData({ ...addItemFormData, _user: auth._id });
     if (addItemFormData) {
       console.log('we should have an owner with _id: ', addItemFormData._user);
       try {
-        await BackendAPIService.addItem(addItemFormData);
+        await BackendAPIService.addItem({
+          ...addItemFormData,
+          _user: auth._id,
+        });
         console.log('Item was added');
         //console.log('data: ', addItemFormData);
       } catch (error) {

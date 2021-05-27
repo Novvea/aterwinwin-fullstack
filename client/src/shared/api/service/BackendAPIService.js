@@ -25,8 +25,12 @@ const userDislikedItem = (likedItem) => {
   return http.patch('/item/liked', likedItem);
 };
 
-const getMyItemsFromServer = (email) => {
-  return http.get('/items/myuploads', { params: { email } });
+const getItemsByUser = (user) => {
+  return http.get('/item', { params: { user } });
+};
+
+const deleteItem = (itemid) => {
+  return http.delete('/item', { params: { itemid } });
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -37,5 +41,6 @@ export default {
   getAllItems,
   userLikedItem,
   userDislikedItem,
-  getMyItemsFromServer,
+  getItemsByUser,
+  deleteItem,
 };
