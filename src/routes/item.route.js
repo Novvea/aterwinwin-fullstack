@@ -9,7 +9,6 @@ const routes = (app) => {
   app.delete('/item/:itemId', ItemController.deleteItem); //:itemId pga params
   app.patch('/item/liked', ItemController.userLikedItem);
   app.patch('/item/disliked', ItemController.userDislikedItem);
-  app.get('/items/myuploads', ItemController.getMyItemsFromServer);
 };
 
 module.exports = { routes }; //skickas sedan till Server.js
