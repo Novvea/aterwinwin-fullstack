@@ -13,8 +13,12 @@ const addItem = (data) => {
   return http.post('/item', data);
 };
 
-const getAllItems = () => {
-  return http.get('/item');
+const getItemsByUser = (include_items_by_user) => {
+  return http.get('/item', { params: { include_items_by_user } });
+};
+
+const getAllItems = (exclude_items_by_user) => {
+  return http.get('/item', { params: { exclude_items_by_user } });
 };
 
 const userLikedItem = (likedItem) => {
@@ -23,10 +27,6 @@ const userLikedItem = (likedItem) => {
 
 const userDislikedItem = (likedItem) => {
   return http.patch('/item/liked', likedItem);
-};
-
-const getItemsByUser = (include_items_by_user) => {
-  return http.get('/item', { params: { include_items_by_user } });
 };
 
 const deleteItem = (itemid) => {

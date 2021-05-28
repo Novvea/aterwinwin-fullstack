@@ -25,13 +25,14 @@ const addItem = async (request, response) => {
   }
 };
 
-const getAllItems = async (request, response) => {
+const getItems = async (request, response) => {
   const { include_items_by_user } = request.query;
+  const { exclude_items_by_user } = request.query;
 
   const filters = {
     ...(include_items_by_user && { _user: include_items_by_user }),
+    ...(exclude_items_by_user && { _user: { $ne: exclude_items_by_user } }),
   };
-
   try {
     const databaseResponse = await ItemModel.find({ ...filters });
     response.status(200).send(databaseResponse);
@@ -95,9 +96,8 @@ const userDislikedItem = async (request, response) => {
 
 module.exports = {
   addItem,
-  getAllItems,
+  getItems,
   deleteItem,
   userLikedItem,
   userDislikedItem,
-  //getItemsByUser,
 };
