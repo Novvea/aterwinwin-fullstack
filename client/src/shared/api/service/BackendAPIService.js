@@ -25,8 +25,8 @@ const userDislikedItem = (likedItem) => {
   return http.patch('/item/liked', likedItem);
 };
 
-const getItemsByUser = (user) => {
-  return http.get('/item', { params: { user } });
+const getItemsByUser = (include_items_by_user) => {
+  return http.get('/item', { params: { include_items_by_user } });
 };
 
 const deleteItem = (itemid) => {

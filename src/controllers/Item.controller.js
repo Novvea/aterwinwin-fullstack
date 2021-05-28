@@ -26,10 +26,10 @@ const addItem = async (request, response) => {
 };
 
 const getAllItems = async (request, response) => {
-  const { user } = request.query;
+  const { include_items_by_user } = request.query;
 
   const filters = {
-    ...(user && { _user: user }),
+    ...(include_items_by_user && { _user: include_items_by_user }),
   };
 
   try {
