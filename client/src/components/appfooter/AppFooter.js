@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import RoutingPath from '../../routes/RoutingPath';
 import styles from './AppFooter.module.css';
 
-const AppFooter = () => {
+export const AppFooter = () => {
   return (
     <footer>
       <nav>

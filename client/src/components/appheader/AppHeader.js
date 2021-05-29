@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import RoutingPath from '../../routes/RoutingPath';
 import styles from './AppHeader.module.css';
 
-const AppHeader = () => {
+export const AppHeader = () => {
   //const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   console.log('auth: ', auth);
