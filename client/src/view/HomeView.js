@@ -26,7 +26,15 @@ export const HomeView = () => {
       HomeView
       <ul>
         {itemAPIResponse.map((item, index) => (
-          <li key={index}>{item.name}</li>
+          <div>
+            <li key={index}>{item.name}</li>
+            <img
+              src={item.url}
+              width={512}
+              height={512}
+              alt="A random produkt taken from the API"
+            />
+          </div>
         ))}
       </ul>
       <ul>
