@@ -7,6 +7,7 @@ import BackendAPIService from '../shared/api/service/BackendAPIService';
 export const HomeView = () => {
   const auth = useSelector((state) => state.auth);
   const [itemAPIResponse, setItemAPIResponse] = useState([]);
+  const [currentItemIndex, setCurrentItemIndex] = useState(0);
 
   useEffect(() => {
     async function showAllItems() {
@@ -21,22 +22,32 @@ export const HomeView = () => {
     showAllItems();
   }, [auth]);
 
+  const currentItem = itemAPIResponse?.[currentItemIndex];
+  console.log('itemAPIResponse: ', itemAPIResponse);
+
+  const userLikedItem = () => {
+    setCurrentItemIndex(currentItemIndex + 1);
+  };
+  const userDislikedItem = () => {
+    setCurrentItemIndex(currentItemIndex + 1);
+  };
+
   return (
     <div>
       HomeView
-      <ul>
-        {itemAPIResponse.map((item, index) => (
-          <div>
-            <li key={index}>{item.name}</li>
-            <img
-              src={item.url}
-              width={512}
-              height={512}
-              alt="A random produkt taken from the API"
-            />
-          </div>
-        ))}
-      </ul>
+      {currentItem && (
+        <div>
+          <p>{currentItem.name}</p>
+          <img
+            src={currentItem.url}
+            width={512}
+            height={512}
+            alt={currentItem.name}
+          />
+          <button onClick={() => userDislikedItem()}>Nej tack!</button>
+          <button onClick={() => userLikedItem()}>Ja tack!</button>
+        </div>
+      )}
       <ul>
         <li>
           <Link to={RoutingPath.addItemView}>Lägg till objekt</Link>
