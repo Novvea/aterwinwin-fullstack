@@ -32,7 +32,10 @@ export const ProfileView = () => {
       ProfileView
       <ul>
         <li>
-          <a href="/api/logout">Logout</a>
+          <a href="/api/logout">
+            {' '}
+            <button>Logout</button>
+          </a>
         </li>
         <li>
           <Link to={RoutingPath.settingsView}> Settings</Link>
