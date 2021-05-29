@@ -3,8 +3,6 @@ import { useDispatch } from 'react-redux';
 import { fetchUser } from './actions';
 import { Routes } from './routes/Routes';
 import '../src/shared/css/Global.css';
-import AppHeader from './components/appheader/AppHeader';
-import AppFooter from './components/appfooter/AppFooter';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -15,10 +13,7 @@ const App = () => {
 
   return (
     <div>
-      <Routes>
-        <AppHeader />
-        <AppFooter />
-      </Routes>
+      <Routes />
     </div>
   );
 };

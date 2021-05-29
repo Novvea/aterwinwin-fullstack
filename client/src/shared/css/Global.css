@@ -4,16 +4,3 @@ body {
   background-color: #e9ffc6;
   font-family: 'Rambla', sans-serif;
 }
-
-header {
-  overflow: hidden;
-}
-
-footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  margin: 10px 0px;
-}

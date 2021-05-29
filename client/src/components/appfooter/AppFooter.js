@@ -1,14 +1,25 @@
 import { Link } from 'react-router-dom';
 import RoutingPath from '../../routes/RoutingPath';
+import styles from './AppFooter.module.css';
 
-const Footer = () => {
+const AppFooter = () => {
   return (
     <footer>
-      <Link to={RoutingPath.aboutView}> Om </Link>
-      <Link to={RoutingPath.licenseView}>Användarvillkor</Link>
-      <a href="https://github.com/Novvea">Jobb</a>
+      <nav>
+        <ul className={styles.navList}>
+          <li>
+            <Link to={RoutingPath.aboutView}>Om</Link>
+          </li>
+          <li>
+            <Link to={RoutingPath.licenseView}>Användarvillkor</Link>
+          </li>
+          <li>
+            <a href="https://github.com/Novvea">Jobb</a>
+          </li>
+        </ul>
+      </nav>
     </footer>
   );
 };
 
-export default Footer;
+export default AppFooter;

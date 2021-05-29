@@ -1,0 +1,35 @@
+.header {
+}
+
+.nav {
+  display: flex;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navList {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 0;
+}
+
+.navList > li {
+  margin-left: 16px;
+}
+
+.navList > li > a {
+  text-decoration: none;
+}
+
+.profileImage {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}

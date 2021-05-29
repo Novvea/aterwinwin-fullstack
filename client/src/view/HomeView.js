@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import RoutingPath from '../routes/RoutingPath';
 import BackendAPIService from '../shared/api/service/BackendAPIService';
+import AppLayout from '../components/AppLayout/AppLayout';
 
 export const HomeView = () => {
   const auth = useSelector((state) => state.auth);
@@ -50,8 +51,7 @@ export const HomeView = () => {
   };
 
   return (
-    <div>
-      <h1>HomeView</h1>
+    <AppLayout>
       {currentItem && (
         <div>
           <p>{currentItem.name}</p>
@@ -72,6 +72,6 @@ export const HomeView = () => {
           <Link to={RoutingPath.addItemView}>Lägg till objekt</Link>
         </li>
       </ul>
-    </div>
+    </AppLayout>
   );
 };
