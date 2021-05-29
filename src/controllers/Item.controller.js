@@ -59,11 +59,12 @@ const deleteItem = async (request, response) => {
 
 const userLikedItem = async (request, response) => {
   const itemId = request.body.id;
-  const email = request.body.email;
+  const userid = request.body.userid;
+  console.log('yserid: ', userid);
   try {
     const databaseResponse = await ItemModel.findOneAndUpdate(
       { _id: itemId },
-      { $addToSet: { interestedUsers: email } }
+      { $addToSet: { interestedUsers: userid } }
     );
     response.status(200).send({
       message: 'Liked items array was updated',
@@ -79,13 +80,16 @@ const userLikedItem = async (request, response) => {
 
 const userDislikedItem = async (request, response) => {
   const itemId = request.body.id;
-  const email = request.body.email;
+  const userid = request.body.userid;
   try {
     const databaseResponse = await ItemModel.findOneAndUpdate(
       { _id: itemId },
-      { $addToSet: { uninterestedUsers: email } }
+      { $addToSet: { uninterestedUsers: userid } }
     );
-    response.status(200).send(data);
+    response.status(200).send({
+      message: 'Disliked items array was updated',
+      data: databaseResponse,
+    });
   } catch (error) {
     response.status(500).send({
       message: 'Could not update unintrestedUsers array',

@@ -25,8 +25,8 @@ const userLikedItem = (likedItem) => {
   return http.patch('/item/liked', likedItem);
 };
 
-const userDislikedItem = (likedItem) => {
-  return http.patch('/item/liked', likedItem);
+const userDislikedItem = (dislikedItem) => {
+  return http.patch('/item/disliked', dislikedItem);
 };
 
 const deleteItem = (itemid) => {

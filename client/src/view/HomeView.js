@@ -25,16 +25,30 @@ export const HomeView = () => {
   const currentItem = itemAPIResponse?.[currentItemIndex];
   console.log('itemAPIResponse: ', itemAPIResponse);
 
-  const userLikedItem = () => {
+  const userLikedItem = async (item) => {
     setCurrentItemIndex(currentItemIndex + 1);
+    try {
+      await BackendAPIService.userLikedItem({ id: item._id, userid: auth._id });
+    } catch (error) {
+      console.log('Error while trying to like item');
+    }
   };
-  const userDislikedItem = () => {
+
+  const userDislikedItem = async (item) => {
     setCurrentItemIndex(currentItemIndex + 1);
+    try {
+      await BackendAPIService.userDislikedItem({
+        id: item._id,
+        userid: auth._id,
+      });
+    } catch (error) {
+      console.log('Error while trying to dislike item');
+    }
   };
 
   return (
     <div>
-      HomeView
+      <h1>HomeView</h1>
       {currentItem && (
         <div>
           <p>{currentItem.name}</p>
@@ -44,8 +58,10 @@ export const HomeView = () => {
             height={512}
             alt={currentItem.name}
           />
-          <button onClick={() => userDislikedItem()}>Nej tack!</button>
-          <button onClick={() => userLikedItem()}>Ja tack!</button>
+          <button onClick={() => userDislikedItem(currentItem)}>
+            Nej tack!
+          </button>
+          <button onClick={() => userLikedItem(currentItem)}>Ja tack!</button>
         </div>
       )}
       <ul>
