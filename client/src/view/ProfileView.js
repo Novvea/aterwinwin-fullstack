@@ -10,23 +10,20 @@ export const ProfileView = () => {
   const [itemAPIResponse, setItemAPIResponse] = useState([]);
 
   useEffect(() => {
-    async function showMyItems() {
-      if (auth._id) {
-        try {
-          const itemsResponse = await BackendAPIService.getItemsByUser(
-            auth._id
-          );
-          setItemAPIResponse(itemsResponse.data);
-          console.log('My items were fetched from server');
-        } catch (error) {
-          console.log('errormessage: ', error);
-        }
-      } else {
-        console.log('The items could not be fetched');
-      }
+    if (auth) {
+      showMyItems();
     }
-    showMyItems();
-  }, []);
+  }, [auth]);
+
+  const showMyItems = async () => {
+    try {
+      const itemsResponse = await BackendAPIService.getItemsByUser(auth._id);
+      setItemAPIResponse(itemsResponse.data);
+      console.log('My items were fetched from server');
+    } catch (error) {
+      console.log('errormessage: ', error);
+    }
+  };
 
   return (
     <AppLayout>
