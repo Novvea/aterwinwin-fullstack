@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import RoutingPath from '../routes/RoutingPath';
 import BackendAPIService from '../shared/api/service/BackendAPIService';
+import AppLayout from '../components/AppLayout/AppLayout';
 
 export const ProfileView = () => {
   const auth = useSelector((state) => state.auth);
@@ -28,7 +29,7 @@ export const ProfileView = () => {
   }, []);
 
   return (
-    <div>
+    <AppLayout>
       ProfileView
       <ul>
         <li>
@@ -46,6 +47,8 @@ export const ProfileView = () => {
           <li key={index}>{item.name}</li>
         ))}
       </ul>
-    </div>
+    </AppLayout>
   );
 };
+
+export default ProfileView;

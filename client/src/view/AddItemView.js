@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import CloudinaryAPIService from '../shared/api/service/CloudinaryAPIService';
 import BackendAPIService from '../shared/api/service/BackendAPIService';
+import AppLayout from '../components/AppLayout/AppLayout';
 
 export const AddItemView = () => {
   const auth = useSelector((state) => state.auth);
@@ -51,7 +52,7 @@ export const AddItemView = () => {
   };
 
   return (
-    <div>
+    <AppLayout>
       <h1>Lägg till objekt</h1>
       <div>
         {addItemFormData.url && (
@@ -112,6 +113,8 @@ export const AddItemView = () => {
       </label>
       <br />
       <button onClick={() => addNewItem()}>Spara</button>
-    </div>
+    </AppLayout>
   );
 };
+
+export default AddItemView;

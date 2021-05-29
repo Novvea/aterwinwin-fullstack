@@ -75,3 +75,5 @@ export const HomeView = () => {
     </AppLayout>
   );
 };
+
+export default HomeView;
