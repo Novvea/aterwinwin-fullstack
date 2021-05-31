@@ -40,7 +40,7 @@ export const ProfileView = () => {
 
   return (
     <AppLayout>
-      ProfileView
+      <h1>ProfileView</h1>
       <ul>
         <li>
           <a href="/api/logout">
@@ -52,11 +52,13 @@ export const ProfileView = () => {
           <Link to={RoutingPath.settingsView}> Settings</Link>
         </li>
       </ul>
+      <h1>Mina objekt</h1>
       <ul>
         {itemAPIResponse.map((item, index) => (
           <li key={index}>{item.name}</li>
         ))}
       </ul>
+      <h1>Saker jag gillat</h1>
       <ul>
         {likedItemAPIResponse.map((item, index) => (
           <li key={index}>{item.name}</li>
