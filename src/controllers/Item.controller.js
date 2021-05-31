@@ -32,6 +32,9 @@ const getItems = async (request, response) => {
   const filters = {
     ...(include_items_by_user && { _user: include_items_by_user }),
     ...(exclude_items_by_user && { _user: { $ne: exclude_items_by_user } }),
+    ...(exclude_items_by_user && {
+      uninterestedUsers: { $nin: [exclude_items_by_user] },
+    }),
   };
   try {
     const databaseResponse = await ItemModel.find({ ...filters });
