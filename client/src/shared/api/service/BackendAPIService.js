@@ -21,6 +21,10 @@ const getAllItems = (exclude_items_by_user) => {
   return http.get('/item', { params: { exclude_items_by_user } });
 };
 
+const getLikedItemsByUser = (items_liked_by_user) => {
+  return http.get('/item', { params: { items_liked_by_user } });
+};
+
 const userLikedItem = (likedItem) => {
   return http.patch('/item/liked', likedItem);
 };
@@ -39,6 +43,7 @@ export default {
   getAllUsers,
   addItem,
   getAllItems,
+  getLikedItemsByUser,
   userLikedItem,
   userDislikedItem,
   getItemsByUser,

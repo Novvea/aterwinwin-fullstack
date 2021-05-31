@@ -8,10 +8,12 @@ import AppLayout from '../components/AppLayout/AppLayout';
 export const ProfileView = () => {
   const auth = useSelector((state) => state.auth);
   const [itemAPIResponse, setItemAPIResponse] = useState([]);
+  const [likedItemAPIResponse, setLikedItemAPIResponse] = useState([]);
 
   useEffect(() => {
     if (auth) {
       showMyItems();
+      showItemsILiked();
     }
   }, [auth]);
 
@@ -20,6 +22,17 @@ export const ProfileView = () => {
       const itemsResponse = await BackendAPIService.getItemsByUser(auth._id);
       setItemAPIResponse(itemsResponse.data);
       console.log('My items were fetched from server');
+    } catch (error) {
+      console.log('errormessage: ', error);
+    }
+  };
+
+  const showItemsILiked = async () => {
+    try {
+      const itemsResponse = await BackendAPIService.getLikedItemsByUser(
+        auth._id
+      );
+      setLikedItemAPIResponse(itemsResponse.data);
     } catch (error) {
       console.log('errormessage: ', error);
     }
@@ -41,6 +54,11 @@ export const ProfileView = () => {
       </ul>
       <ul>
         {itemAPIResponse.map((item, index) => (
+          <li key={index}>{item.name}</li>
+        ))}
+      </ul>
+      <ul>
+        {likedItemAPIResponse.map((item, index) => (
           <li key={index}>{item.name}</li>
         ))}
       </ul>
