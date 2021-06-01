@@ -1,0 +1,17 @@
+.navList {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+  font-size: 0.75rem;
+}
+
+.navList > li {
+  margin: 0 8px;
+}
+
+.navList > li > a {
+  text-decoration: none;
+}
