@@ -6,9 +6,14 @@ const { Schema } = mongoose;
 //*************************************
 const authUserSchema = new Schema({
   googleId: String,
+  displayName: String,
+  firstName: String,
+  lastName: String,
+  image: String,
+  email: String,
 });
 
-mongoose.model('authuser', authUserSchema); //This creates our model class
+module.exports = mongoose.model('authuser', authUserSchema); //This creates our model class
 //const UserModel = mongoose.model('users', userSchema) //This creates our model class
 
 //*************************************

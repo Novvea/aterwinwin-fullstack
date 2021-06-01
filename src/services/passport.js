@@ -5,13 +5,13 @@ const keys = require('../../configurations/keys');
 
 const AuthUser = mongoose.model('authuser'); //user-class declaration
 
-passport.serializeUser((user, done) => {
-  done(null, user.id); //id created by mongodb, not the profile-id
+passport.serializeUser((authuser, done) => {
+  done(null, authuser.id); //id created by mongodb, not the profile-id
 });
 
 passport.deserializeUser((id, done) => {
-  AuthUser.findById(id).then((user) => {
-    done(null, user);
+  AuthUser.findById(id).then((authuser) => {
+    done(null, authuser);
   });
 });
 
@@ -24,12 +24,18 @@ passport.use(
       proxy: true,
     },
     async (accessToken, refreshToken, profile, done) => {
-      //now we can use this to save our user to the database
-      const existingUser = await AuthUser.findOne({ googleId: profile.id });
-      if (existingUser) {
-        return done(null, existingUser);
-      }
-      const authuser = await new AuthUser({ googleId: profile.id }).save();
+      const authuser = await AuthUser.findOneAndUpdate(
+        { googleId: profile.id },
+        {
+          googleId: profile.id,
+          displayName: profile.displayName,
+          firstName: profile.name.givenName,
+          lastName: profile.name.familyName,
+          image: profile.photos[0].value,
+          email: profile.emails[0].value,
+        },
+        { upsert: true, new: true, setDefaultsOnInsert: true }
+      );
       done(null, authuser);
     }
   )

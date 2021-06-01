@@ -34,8 +34,9 @@ export const AppHeader = () => {
                 <Link to={RoutingPath.profileView}>
                   <img
                     className={styles.profileImage}
-                    src={'https://thispersondoesnotexist.com/image'}
-                    alt={auth.googleId}
+                    src={auth.image}
+                    alt={auth.displayName}
+                    title={auth.displayName}
                   />
                 </Link>
               </li>
