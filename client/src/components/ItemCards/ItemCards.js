@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import BackendAPIService from '../../shared/api/service/BackendAPIService';
+import RoutingPath from '../../routes/RoutingPath';
 import styles from './ItemCards.module.css';
 
 export const ItemCards = () => {
@@ -50,25 +52,44 @@ export const ItemCards = () => {
   };
 
   return (
-    <div>
-      {currentItem && (
+    <div className={styles.itemCards}>
+      {currentItem ? (
         <>
           <div className={styles.card}>
-            <p>{currentItem.name}</p>
             <img
+              className={styles.image}
               src={currentItem.url}
               width={512}
               height={512}
               alt={currentItem.name}
             />
+            <h3 className={styles.name}>{currentItem.name}</h3>
+            <div className={styles.details}>{currentItem.category}</div>
           </div>
           <div className={styles.actions}>
-            <button onClick={() => userDislikedItem(currentItem)}>
-              Nej tack!
-            </button>
-            <button onClick={() => userLikedItem(currentItem)}>Ja tack!</button>
+            <div className={styles.likeButtons}>
+              <button
+                className={styles.dislike}
+                onClick={() => userDislikedItem(currentItem)}
+              >
+                Nej tack!
+              </button>
+              <button
+                className={styles.like}
+                onClick={() => userLikedItem(currentItem)}
+              >
+                Ja tack!
+              </button>
+            </div>
+            <div>
+              <Link className={styles.addItem} to={RoutingPath.addItemView}>
+                + Lägg till objekt
+              </Link>
+            </div>
           </div>
         </>
+      ) : (
+        <p>Det finns inga fler objekt :(</p>
       )}
     </div>
   );

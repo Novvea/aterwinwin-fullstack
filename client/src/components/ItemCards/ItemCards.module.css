@@ -1,9 +1,77 @@
+.itemCards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
 .card {
-  margin: 16px;
-  background: white;
+  padding: 16px;
+  background: #fff5ee;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 8px 32px 0 #66aa69;
+}
+
+.image {
+  display: flex;
+  border-radius: 6px;
+  max-width: 50vh;
+  height: auto;
+}
+
+.name {
+  font-size: 1.25rem;
+  margin: 1rem 0 0.5rem 0;
+  color: #333;
+}
+
+.details {
+  font-size: 0.75rem;
+  color: #757575;
 }
 
 .actions {
+  width: 100%;
+  margin: 32px 0 16px 0px;
+}
+
+.actions button,
+.actions a {
+  min-height: 3rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.likeButtons {
   display: grid;
+  width: 100%;
   grid-template-columns: 1fr 1fr;
+  grid-gap: 8px;
+  margin-bottom: 16px;
+}
+
+.like {
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+}
+
+.dislike {
+  background: #eaaf1a;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+}
+
+.addItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px dotted var(--primary-color);
+  text-decoration: none;
+  font-weight: 700;
 }
