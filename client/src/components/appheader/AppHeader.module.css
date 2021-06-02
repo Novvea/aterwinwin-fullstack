@@ -29,6 +29,10 @@
   text-decoration: none;
 }
 
+.navList > li > a:hover {
+  text-decoration: underline;
+}
+
 .profileImage {
   width: 64px;
   height: 64px;

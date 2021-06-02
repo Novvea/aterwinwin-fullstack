@@ -12,12 +12,18 @@
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 8px 32px 0 #66aa69;
+  transition: transform 0.125s;
+  cursor: grab;
+}
+
+.card:hover {
+  transform: translateY(-5px);
 }
 
 .image {
   display: flex;
   border-radius: 6px;
-  max-width: 50vh;
+  max-width: 46vh;
   height: auto;
 }
 
@@ -53,11 +59,28 @@
   margin-bottom: 16px;
 }
 
+.likeButtons button {
+  transition: box-shadow 0.125s, transform 0.125s;
+  text-shadow: 0 2px 1px rgba(0, 0, 0, 0.333);
+}
+
 .like {
   background: var(--primary-color);
   color: #fff;
   font-weight: 700;
   border: none;
+  box-shadow: 0px 4px 0px #316633, 0px 6px 15px #66aa69;
+}
+
+.like:hover {
+  box-shadow: 0px 2px 0px #316633, 0px 6px 15px #66aa69;
+  transform: translateY(2px);
+}
+
+.like:active {
+  box-shadow: 0px 2px 0px #316633, 0px 6px 15px #66aa69;
+  background: #316633;
+  transform: translateY(2px);
 }
 
 .dislike {
@@ -65,6 +88,18 @@
   color: #fff;
   font-weight: 700;
   border: none;
+  box-shadow: 0px 4px 0px #b88914, 0px 6px 15px #66aa69;
+}
+
+.dislike:hover {
+  box-shadow: 0px 2px 0px #b88914, 0px 6px 15px #66aa69;
+  transform: translateY(2px);
+}
+
+.dislike:active {
+  box-shadow: 0px 2px 0px #b88914, 0px 6px 15px #66aa69;
+  background: #b88914;
+  transform: translateY(2px);
 }
 
 .addItem {
@@ -74,4 +109,13 @@
   border: 3px dotted var(--primary-color);
   text-decoration: none;
   font-weight: 700;
+  transition: background-color 0.125s;
+}
+
+.addItem:hover {
+  background: rgb(102, 170, 105, 0.125);
+}
+
+.addItem:active {
+  background: rgb(102, 170, 105, 0.5);
 }

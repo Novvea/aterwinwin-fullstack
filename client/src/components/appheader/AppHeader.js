@@ -18,10 +18,7 @@ export const AppHeader = () => {
           {!auth && (
             <>
               <li>
-                <Link to={RoutingPath.loginView}>Logga in</Link>
-              </li>
-              <li>
-                <Link to={RoutingPath.registerView}>Registrera dig</Link>
+                <a href="/auth/google">Logga in</a>
               </li>
             </>
           )}
