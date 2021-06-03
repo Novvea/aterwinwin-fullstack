@@ -21,8 +21,8 @@ const getAllItems = (exclude_items_by_user) => {
   return http.get('/item', { params: { exclude_items_by_user } });
 };
 
-const getLikedItemsByUser = (items_liked_by_user) => {
-  return http.get('/item', { params: { items_liked_by_user } });
+const getLikedItemsByUser = (include_items_liked_by_user) => {
+  return http.get('/item', { params: { include_items_liked_by_user } });
 };
 
 const userLikedItem = (likedItem) => {
