@@ -28,7 +28,6 @@ const addItem = async (request, response) => {
 const getItems = async (request, response) => {
   const { include_items_by_user } = request.query;
   const { exclude_items_by_user } = request.query;
-  const { include_items_liked_by_user } = request.query;
 
   const filters = {
     ...(include_items_by_user && { _user: include_items_by_user }),
@@ -39,6 +38,21 @@ const getItems = async (request, response) => {
     ...(exclude_items_by_user && {
       interestedUsers: { $nin: [exclude_items_by_user] },
     }),
+  };
+  try {
+    const databaseResponse = await ItemModel.find({ ...filters });
+    response.status(200).send(databaseResponse);
+  } catch (error) {
+    response.status(500).send({
+      message: error.message,
+    });
+  }
+};
+
+const getLikedItems = async (request, response) => {
+  const { include_items_liked_by_user } = request.query;
+
+  const filters = {
     ...(include_items_liked_by_user && {
       interestedUsers: { $in: [include_items_liked_by_user] },
     }),
@@ -56,6 +70,7 @@ const getItems = async (request, response) => {
 const deleteItem = async (request, response) => {
   try {
     const itemId = request.params.itemId;
+
     const databaseResponse = await ItemModel.findByIdAndDelete(itemId); //ska hitta en vara baserat på id och sedan deleta
     response
       .status(200)
@@ -88,6 +103,8 @@ const userLikedItem = async (request, response) => {
   }
 };
 
+//{ $pull: { interestedUsers: userId } }
+
 const userDislikedItem = async (request, response) => {
   const itemId = request.body.id;
   const userid = request.body.userid;
@@ -111,6 +128,7 @@ const userDislikedItem = async (request, response) => {
 module.exports = {
   addItem,
   getItems,
+  getLikedItems,
   deleteItem,
   userLikedItem,
   userDislikedItem,
