@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import CloudinaryAPIService from '../shared/api/service/CloudinaryAPIService';
 import BackendAPIService from '../shared/api/service/BackendAPIService';
 import AppLayout from '../components/AppLayout/AppLayout';
+import RoutingPath from '../routes/RoutingPath';
 
 export const AddItemView = () => {
   const auth = useSelector((state) => state.auth);
-  console.log(auth);
+  const history = useHistory();
 
   const [addItemFormData, setAddItemFormData] = useState({
     name: '',
@@ -42,7 +44,7 @@ export const AddItemView = () => {
           _user: auth._id,
         });
         console.log('Item was added');
-        //console.log('data: ', addItemFormData);
+        history.push(RoutingPath.profileView);
       } catch (error) {
         console.log('errormessage: ', error);
       }
