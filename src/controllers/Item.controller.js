@@ -28,7 +28,7 @@ const addItem = async (request, response) => {
 const getItems = async (request, response) => {
   const { include_items_by_user } = request.query;
   const { exclude_items_by_user } = request.query;
-  const { items_liked_by_user } = request.query;
+  const { include_items_liked_by_user } = request.query;
 
   const filters = {
     ...(include_items_by_user && { _user: include_items_by_user }),
@@ -36,8 +36,11 @@ const getItems = async (request, response) => {
     ...(exclude_items_by_user && {
       uninterestedUsers: { $nin: [exclude_items_by_user] },
     }),
-    ...(items_liked_by_user && {
-      interestedUsers: { $in: [items_liked_by_user] },
+    ...(exclude_items_by_user && {
+      interestedUsers: { $nin: [exclude_items_by_user] },
+    }),
+    ...(include_items_liked_by_user && {
+      interestedUsers: { $in: [include_items_liked_by_user] },
     }),
   };
   try {
