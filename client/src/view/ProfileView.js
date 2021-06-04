@@ -39,18 +39,13 @@ export const ProfileView = () => {
     }
   };
 
-  console.log('itemAPIResponse: ', itemAPIResponse);
-  console.log('likedItemAPIResponse: ', likedItemAPIResponse);
-
   const removeItemsILiked = async (item) => {
-    //console.log('item: ', item)
     setThisItemIsNoLongerLiked(item);
     try {
       await BackendAPIService.updateUserLikedItem({
         update_item_id: item._id,
         user_id: auth._id,
       });
-      //setLikedItemAPIResponse(itemsResponse.data);
       console.log('I do no longer like this item');
     } catch (error) {
       console.log('errormessage: ', error);
@@ -59,11 +54,9 @@ export const ProfileView = () => {
 
   return (
     <AppLayout>
-      <h1>ProfileView</h1>
       <ul>
         <li>
           <a href="/api/logout">
-            {' '}
             <button>Logout</button>
           </a>
         </li>
