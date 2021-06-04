@@ -54,31 +54,43 @@ export const ProfileView = () => {
 
   return (
     <AppLayout>
-      <ul>
-        <li>
-          <a href="/api/logout">
-            <button>Logout</button>
-          </a>
-        </li>
-        <li>
-          <Link to={RoutingPath.settingsView}> Settings</Link>
-        </li>
-      </ul>
-      <h1>Mina objekt</h1>
-      <ul>
-        {itemAPIResponse.map((item, index) => (
-          <li key={index}>{item.name}</li>
-        ))}
-      </ul>
-      <h1>Saker jag gillat</h1>
-      <ul>
-        {likedItemAPIResponse.map((item, index) => (
-          <li key={index}>
-            {item.name}
-            <button onClick={() => removeItemsILiked(item)}>Ta bort</button>
-          </li>
-        ))}
-      </ul>
+      {auth && (
+        <div>
+          <img
+            src={auth.image}
+            alt={auth.displayName}
+            title={auth.displayName}
+          />
+          <h2>{auth.displayName}</h2>
+          <a href="/api/logout">Logga ut</a>
+        </div>
+      )}
+      <div>
+        <h1>Dina matchningar</h1>
+      </div>
+      <div>
+        <h1>Dina tillagda objekt</h1>
+        <ul>
+          {itemAPIResponse.map((item, index) => (
+            <li key={index}>
+              {item.name}
+              <img src={item.url} width={100} height={100} alt={item.name} />
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h1>Objekt du gillat</h1>
+        <ul>
+          {likedItemAPIResponse.map((item, index) => (
+            <li key={index}>
+              {item.name}
+              <img src={item.url} width={100} height={100} alt={item.name} />
+              <button onClick={() => removeItemsILiked(item)}>Ta bort</button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </AppLayout>
   );
 };
