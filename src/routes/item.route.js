@@ -7,6 +7,7 @@ const routes = (app) => {
   app.get('/item/liked', ItemController.getLikedItems);
   app.delete('/item/:itemId', ItemController.deleteItem); //:itemId pga params
   app.patch('/item/liked', ItemController.userLikedItem);
+  app.patch('/item/update', ItemController.updateUserLikedItem);
   app.patch('/item/disliked', ItemController.userDislikedItem);
 };
 

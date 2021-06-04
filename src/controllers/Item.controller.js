@@ -83,13 +83,13 @@ const deleteItem = async (request, response) => {
 };
 
 const userLikedItem = async (request, response) => {
-  const itemId = request.body.id;
-  const userid = request.body.userid;
-  console.log('yserid: ', userid);
+  const { liked_item_id } = request.body;
+  const { user_id } = request.body;
+
   try {
     const databaseResponse = await ItemModel.findOneAndUpdate(
-      { _id: itemId },
-      { $addToSet: { interestedUsers: userid } }
+      { _id: liked_item_id },
+      { $addToSet: { interestedUsers: user_id } }
     );
     response.status(200).send({
       message: 'Liked items array was updated',
@@ -103,7 +103,27 @@ const userLikedItem = async (request, response) => {
   }
 };
 
-//{ $pull: { interestedUsers: userId } }
+const updateUserLikedItem = async (request, response) => {
+  const { update_item_id } = request.body;
+  const { user_id } = request.body;
+
+  try {
+    const databaseResponse = await ItemModel.findOneAndUpdate(
+      { _id: update_item_id },
+      { $pull: { interestedUsers: user_id } },
+      { returnOriginal: false }
+    );
+    response.status(200).send({
+      message: 'Item was no longer liked by user',
+      data: databaseResponse,
+    });
+  } catch (error) {
+    response.status(500).send({
+      message: 'Could not update liked items array',
+      stack: error,
+    });
+  }
+};
 
 const userDislikedItem = async (request, response) => {
   const itemId = request.body.id;
@@ -131,5 +151,6 @@ module.exports = {
   getLikedItems,
   deleteItem,
   userLikedItem,
+  updateUserLikedItem,
   userDislikedItem,
 };

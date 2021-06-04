@@ -13,20 +13,24 @@ const addItem = (data) => {
   return http.post('/item', data);
 };
 
-const getItemsByUser = (include_items_by_user) => {
-  return http.get('/item', { params: { include_items_by_user } });
-};
-
 const getAllItems = (exclude_items_by_user) => {
   return http.get('/item', { params: { exclude_items_by_user } });
 };
 
-const getLikedItemsByUser = (include_items_liked_by_user) => {
-  return http.get('/item', { params: { include_items_liked_by_user } });
+const getItemsByUser = (include_items_by_user) => {
+  return http.get('/item', { params: { include_items_by_user } });
 };
 
-const userLikedItem = (likedItem) => {
-  return http.patch('/item/liked', likedItem);
+const getLikedItemsByUser = (include_items_liked_by_user) => {
+  return http.get('/item/liked', { params: { include_items_liked_by_user } });
+};
+
+const userLikedItem = (user_liked_item) => {
+  return http.patch('/item/liked', user_liked_item);
+};
+
+const updateUserLikedItem = (update_user_liked_item) => {
+  return http.patch('/item/update', update_user_liked_item);
 };
 
 const userDislikedItem = (dislikedItem) => {
@@ -45,6 +49,7 @@ export default {
   getAllItems,
   getLikedItemsByUser,
   userLikedItem,
+  updateUserLikedItem,
   userDislikedItem,
   getItemsByUser,
   deleteItem,

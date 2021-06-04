@@ -9,13 +9,14 @@ export const ProfileView = () => {
   const auth = useSelector((state) => state.auth);
   const [itemAPIResponse, setItemAPIResponse] = useState([]);
   const [likedItemAPIResponse, setLikedItemAPIResponse] = useState([]);
+  const [thisItemIsNoLongerLiked, setThisItemIsNoLongerLiked] = useState();
 
   useEffect(() => {
     if (auth) {
       showMyItems();
       showItemsILiked();
     }
-  }, [auth]);
+  }, [auth, thisItemIsNoLongerLiked]);
 
   const showMyItems = async () => {
     try {
@@ -33,6 +34,24 @@ export const ProfileView = () => {
         auth._id
       );
       setLikedItemAPIResponse(itemsResponse.data);
+    } catch (error) {
+      console.log('errormessage: ', error);
+    }
+  };
+
+  console.log('itemAPIResponse: ', itemAPIResponse);
+  console.log('likedItemAPIResponse: ', likedItemAPIResponse);
+
+  const removeItemsILiked = async (item) => {
+    //console.log('item: ', item)
+    setThisItemIsNoLongerLiked(item);
+    try {
+      await BackendAPIService.updateUserLikedItem({
+        update_item_id: item._id,
+        user_id: auth._id,
+      });
+      //setLikedItemAPIResponse(itemsResponse.data);
+      console.log('I do no longer like this item');
     } catch (error) {
       console.log('errormessage: ', error);
     }
@@ -61,7 +80,10 @@ export const ProfileView = () => {
       <h1>Saker jag gillat</h1>
       <ul>
         {likedItemAPIResponse.map((item, index) => (
-          <li key={index}>{item.name}</li>
+          <li key={index}>
+            {item.name}
+            <button onClick={() => removeItemsILiked(item)}>Ta bort</button>
+          </li>
         ))}
       </ul>
     </AppLayout>
