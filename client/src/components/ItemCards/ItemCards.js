@@ -4,23 +4,32 @@ import { Link } from 'react-router-dom';
 import BackendAPIService from '../../shared/api/service/BackendAPIService';
 import RoutingPath from '../../routes/RoutingPath';
 import styles from './ItemCards.module.css';
+import logoimage from '../../shared/images/Logo_aterwinwin_test.jpg';
 
 export const ItemCards = () => {
   const auth = useSelector((state) => state.auth);
 
-  const [itemAPIResponse, setItemAPIResponse] = useState([]);
+  const logoItem = {
+    id: '000',
+    name: 'Återwinwin',
+    category: 'Swipea och byt',
+    position: 'Här och nu!',
+    url: logoimage,
+  };
+
+  const [itemAPIResponse, setItemAPIResponse] = useState([logoItem]);
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
 
   useEffect(() => {
     if (auth) {
-      showAllItems();
+      getAllItems();
     }
   }, [auth]);
 
   const currentItem = itemAPIResponse?.[currentItemIndex];
   console.log('itemAPIResponse: ', itemAPIResponse);
 
-  const showAllItems = async () => {
+  const getAllItems = async () => {
     try {
       const itemsResponse = await BackendAPIService.getAllItems(auth._id);
       setItemAPIResponse(itemsResponse.data);
@@ -33,7 +42,10 @@ export const ItemCards = () => {
   const userLikedItem = async (item) => {
     setCurrentItemIndex(currentItemIndex + 1);
     try {
-      await BackendAPIService.userLikedItem({ id: item._id, userid: auth._id });
+      await BackendAPIService.userLikedItem({
+        liked_item_id: item._id,
+        user_id: auth._id,
+      });
     } catch (error) {
       console.log('Error while trying to like item');
     }
