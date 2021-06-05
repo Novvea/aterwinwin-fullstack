@@ -20,16 +20,11 @@ app.use(cors({ credentials: true }));
 app.use(
   helmet({
     contentSecurityPolicy: {
+      useDefaults: true,
       directives: {
-        defaultSrc: ["'self'"],
-        connectSrc: ["'self'"],
-        frameSrc: ["'self'"],
-        childSrc: ["'self'"],
-        scriptSrc: ["'self'"],
         styleSrc: ["'self'", 'https://fonts.googleapis.com'],
         fontSrc: ["'self'", 'https://fonts.gstatic.com'],
         imgSrc: ["'self'", 'https://res.cloudinary.com'],
-        baseUri: ["'self'"],
       },
     },
   })
