@@ -7,6 +7,7 @@ import styles from './ItemCards.module.css';
 import logoimage from '../../shared/images/Logo_aterwinwin_test.jpg';
 
 export const ItemCards = () => {
+  const pathname = window?.location.pathname;
   const auth = useSelector((state) => state.auth);
 
   const logoItem = {
@@ -17,15 +18,15 @@ export const ItemCards = () => {
     url: logoimage,
   };
 
-  const [itemAPIResponse, setItemAPIResponse] = useState([logoItem]);
+  const [itemAPIResponse, setItemAPIResponse] = useState();
   const [itsAMatchAPIResponse, setItsAMatchAPIResponse] = useState([]);
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
 
   useEffect(() => {
-    if (auth) {
+    if (auth.data) {
       getAllItems();
     }
-  }, [auth]);
+  }, [auth.data]);
 
   const currentItem = itemAPIResponse?.[currentItemIndex];
 
@@ -69,7 +70,7 @@ export const ItemCards = () => {
 
   return (
     <div className={styles.itemCards}>
-      {currentItem ? (
+      {auth.data && currentItem && (
         <>
           <div className={styles.card}>
             <img
@@ -104,8 +105,26 @@ export const ItemCards = () => {
             </div>
           </div>
         </>
-      ) : (
-        <p>Det finns inga fler objekt :(</p>
+      )}
+      {auth?.request?.[pathname]?.status === 'REQUEST' && <p>Laddar!!!</p>}
+      {auth?.request?.[pathname]?.status === 'SUCCESS' &&
+        auth.data &&
+        !currentItem && <p>Det finns inga fler objekt :(</p>}
+      {auth?.request?.[pathname]?.status === 'SUCCESS' && !auth.data && (
+        <div className={styles.card}>
+          <img
+            className={styles.image}
+            src={logoimage}
+            width={512}
+            height={512}
+            alt="Återwinwin"
+          />
+          <h3 className={styles.name}>Återwinwin</h3>
+          <div className={styles.details}>Logga in för att swipa och byta</div>
+        </div>
+      )}
+      {auth.request?.[pathname]?.status === 'FAILURE' && (
+        <p>Något gick fel :(</p>
       )}
     </div>
   );

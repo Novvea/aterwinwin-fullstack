@@ -16,7 +16,7 @@ export const AppHeader = () => {
           <Link to={RoutingPath.homeView}>LOGO</Link>
         </div>
         <ul className={styles.navList}>
-          {auth.request?.[pathname].status === 'SUCCESS' && !auth.data && (
+          {auth.request?.[pathname]?.status === 'SUCCESS' && !auth.data && (
             <>
               <li>
                 <a href="/auth/google">Logga in</a>
