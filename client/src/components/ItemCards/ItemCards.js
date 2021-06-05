@@ -39,26 +39,27 @@ export const ItemCards = () => {
     }
   };
 
-  const userLikedItem = async (item) => {
+  const userLikedItem = async (likedItem) => {
     setCurrentItemIndex(currentItemIndex + 1);
-    console.log('item i liked: ', item);
     try {
       const matchResponse = await BackendAPIService.userLikedItem({
-        liked_item_id: item._id,
+        liked_item_id: likedItem._id,
         user_id: auth._id,
       });
       setItsAMatchAPIResponse(matchResponse);
-      console.log('bbbbbb', matchResponse);
+      if (matchResponse.data.matches.length) {
+        alert(`Its a match ${matchResponse.data.matches[0].name}`);
+      }
     } catch (error) {
       console.log('Error while trying to like item');
     }
   };
 
-  const userDislikedItem = async (item) => {
+  const userDislikedItem = async (dislikedItem) => {
     setCurrentItemIndex(currentItemIndex + 1);
     try {
       await BackendAPIService.userDislikedItem({
-        id: item._id,
+        id: dislikedItem._id,
         userid: auth._id,
       });
     } catch (error) {
