@@ -4,6 +4,8 @@ import RoutingPath from '../../routes/RoutingPath';
 import styles from './AppHeader.module.css';
 
 export const AppHeader = () => {
+  const pathname = window?.location.pathname;
+
   //const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
 
@@ -14,14 +16,14 @@ export const AppHeader = () => {
           <Link to={RoutingPath.homeView}>LOGO</Link>
         </div>
         <ul className={styles.navList}>
-          {!auth && (
+          {auth.request?.[pathname] === 'SUCCESS' && !auth.data && (
             <>
               <li>
                 <a href="/auth/google">Logga in</a>
               </li>
             </>
           )}
-          {auth && (
+          {auth.data && (
             <>
               <li>
                 <Link to={RoutingPath.addItemView}>Lägg till objekt</Link>
@@ -30,9 +32,9 @@ export const AppHeader = () => {
                 <Link to={RoutingPath.profileView}>
                   <img
                     className={styles.profileImage}
-                    src={auth.image}
-                    alt={auth.displayName}
-                    title={auth.displayName}
+                    src={auth.data.image}
+                    alt={auth.data.displayName}
+                    title={auth.data.displayName}
                   />
                 </Link>
               </li>
