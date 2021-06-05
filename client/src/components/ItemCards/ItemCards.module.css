@@ -113,7 +113,7 @@
 }
 
 .addItem:hover {
-  background: rgb(102, 170, 105, 0.125);
+  background: rgb(102, 170, 105, 0.25);
 }
 
 .addItem:active {
