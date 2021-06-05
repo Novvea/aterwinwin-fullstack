@@ -18,6 +18,7 @@ export const ItemCards = () => {
   };
 
   const [itemAPIResponse, setItemAPIResponse] = useState([logoItem]);
+  const [itsAMatchAPIResponse, setItsAMatchAPIResponse] = useState([]);
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
 
   useEffect(() => {
@@ -27,7 +28,6 @@ export const ItemCards = () => {
   }, [auth]);
 
   const currentItem = itemAPIResponse?.[currentItemIndex];
-  console.log('itemAPIResponse: ', itemAPIResponse);
 
   const getAllItems = async () => {
     try {
@@ -41,11 +41,14 @@ export const ItemCards = () => {
 
   const userLikedItem = async (item) => {
     setCurrentItemIndex(currentItemIndex + 1);
+    console.log('item i liked: ', item);
     try {
-      await BackendAPIService.userLikedItem({
+      const matchResponse = await BackendAPIService.userLikedItem({
         liked_item_id: item._id,
         user_id: auth._id,
       });
+      setItsAMatchAPIResponse(matchResponse);
+      console.log('bbbbbb', matchResponse);
     } catch (error) {
       console.log('Error while trying to like item');
     }

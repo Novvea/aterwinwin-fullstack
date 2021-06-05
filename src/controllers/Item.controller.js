@@ -83,17 +83,21 @@ const deleteItem = async (request, response) => {
 };
 
 const userLikedItem = async (request, response) => {
-  const { liked_item_id } = request.body;
-  const { user_id } = request.body;
+  const { liked_item_id, user_id } = request.body;
 
   try {
-    const databaseResponse = await ItemModel.findOneAndUpdate(
+    const likedItemResponse = await ItemModel.findOneAndUpdate(
       { _id: liked_item_id },
-      { $addToSet: { interestedUsers: user_id } }
+      { $addToSet: { interestedUsers: user_id } },
+      { returnOriginal: false }
     );
+    const matchResponse = await ItemModel.find({
+      _user: user_id,
+      interestedUsers: { $in: [likedItemResponse._user] },
+    });
     response.status(200).send({
       message: 'Liked items array was updated',
-      data: databaseResponse,
+      data: matchResponse,
     });
   } catch (error) {
     response.status(500).send({
