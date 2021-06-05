@@ -6,7 +6,6 @@ import styles from './AppHeader.module.css';
 export const AppHeader = () => {
   //const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
-  console.log('auth: ', auth);
 
   return (
     <header className={styles.header}>
