@@ -17,7 +17,23 @@ require('./src/services/passport'); //does not work without this line
 const app = express(); //wrappar hela applikationen, kan även heta application eller server
 app.use(express.json()); //istället för body-Parser
 app.use(cors({ credentials: true }));
-app.use(helmet()); //döljer viss data
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        connectSrc: ["'self'"],
+        frameSrc: ["'self'"],
+        childSrc: ["'self'"],
+        scriptSrc: ["'self'"],
+        styleSrc: ["'self'", 'https://fonts.googleapis.com'],
+        fontSrc: ["'self'", 'https://fonts.gstatic.com'],
+        imgSrc: ["'self'", 'https://res.cloudinary.com'],
+        baseUri: ["'self'"],
+      },
+    },
+  })
+); //döljer viss data
 app.use(morgan('common')); //ger oss info hur och vem som gjort anropet
 
 //app.use(bodyParser.json()); //lades till vid betalningsavsnittet
