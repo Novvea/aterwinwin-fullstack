@@ -13,7 +13,9 @@ export const AppHeader = () => {
     <header className={styles.header}>
       <nav className={styles.nav}>
         <div className={styles.logo}>
-          <Link to={RoutingPath.homeView}>LOGO</Link>
+          <Link to={RoutingPath.homeView}>
+            <h1>Återwin-win</h1>
+          </Link>
         </div>
         <ul className={styles.navList}>
           {auth.request?.[pathname]?.status === 'SUCCESS' && !auth.data && (
@@ -26,13 +28,15 @@ export const AppHeader = () => {
           {auth.data && (
             <>
               <li>
-                <Link to={RoutingPath.addItemView}>Lägg till objekt</Link>
+                <Link to={RoutingPath.addItemView}>+ Lägg till objekt</Link>
               </li>
               <li>
                 <Link to={RoutingPath.profileView}>
                   <img
                     className={styles.profileImage}
                     src={auth.data.image}
+                    width={96}
+                    height={96}
                     alt={auth.data.displayName}
                     title={auth.data.displayName}
                   />
