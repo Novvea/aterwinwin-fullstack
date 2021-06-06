@@ -23,7 +23,7 @@ app.use(
       useDefaults: true,
       directives: {
         scriptSrc: ["'self' https: 'unsafe-inline'"],
-        defaultSrc: ["'self'", 'localhost:5000'],
+        defaultSrc: ["'self'"],
         styleSrc: ["'self'", 'https://fonts.googleapis.com'],
         fontSrc: ["'self'", 'https://fonts.gstatic.com'],
         imgSrc: [
