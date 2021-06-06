@@ -24,7 +24,11 @@ app.use(
       directives: {
         scriptSrc: ["'self' https: 'unsafe-inline'"],
         defaultSrc: ["'self'", 'https://aterwinwin-fullstack.herokuapp.com:*'],
-        connectSrc: ["'self'", 'https://aterwinwin-fullstack.herokuapp.com:*'],
+        connectSrc: [
+          "'self'",
+          'https://aterwinwin-fullstack.herokuapp.com:*',
+          'https://api.cloudinary.com',
+        ],
         styleSrc: ["'self'", 'https://fonts.googleapis.com'],
         fontSrc: ["'self'", 'https://fonts.gstatic.com'],
         imgSrc: [
