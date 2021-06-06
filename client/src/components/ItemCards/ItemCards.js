@@ -32,7 +32,7 @@ export const ItemCards = () => {
 
   const getAllItems = async () => {
     try {
-      const itemsResponse = await BackendAPIService.getAllItems(auth._id);
+      const itemsResponse = await BackendAPIService.getAllItems(auth.data._id);
       setItemAPIResponse(itemsResponse.data);
       console.log('Items for the user were fetched from server');
     } catch (error) {
@@ -45,7 +45,7 @@ export const ItemCards = () => {
     try {
       const matchResponse = await BackendAPIService.userLikedItem({
         liked_item_id: likedItem._id,
-        user_id: auth._id,
+        user_id: auth.data._id,
       });
       setItsAMatchAPIResponse(matchResponse);
       if (matchResponse.data.matches.length) {
@@ -61,7 +61,7 @@ export const ItemCards = () => {
     try {
       await BackendAPIService.userDislikedItem({
         id: dislikedItem._id,
-        userid: auth._id,
+        userid: auth.data._id,
       });
     } catch (error) {
       console.log('Error while trying to dislike item');

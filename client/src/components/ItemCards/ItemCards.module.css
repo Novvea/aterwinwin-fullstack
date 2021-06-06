@@ -13,7 +13,7 @@
   text-align: center;
   box-shadow: 0 8px 32px 0 #66aa69;
   transition: transform 0.125s;
-  cursor: grab;
+  cursor: pointer;
 }
 
 .card:hover {
@@ -23,7 +23,8 @@
 .image {
   display: flex;
   border-radius: 6px;
-  max-width: 46vh;
+  width: 100%;
+  max-width: 50vh;
   height: auto;
 }
 
@@ -40,7 +41,7 @@
 
 .actions {
   width: 100%;
-  margin: 32px 0 16px 0px;
+  margin: 16px 0 16px 0px;
 }
 
 .actions button,
