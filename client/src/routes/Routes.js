@@ -4,7 +4,7 @@ import { HomeView } from '../view/HomeView';
 import { AboutView } from '../view/AboutView';
 import { LoginView } from '../view/LoginView';
 import { RegisterView } from '../view/RegisterView';
-import { AddItemView } from '../view/AddItemView';
+import { AddItemView } from '../view/AddItemView/AddItemView';
 import { ProfileView } from '../view/ProfileView';
 import { SettingsView } from '../view/SettingsView';
 import { LicenseView } from '../view/LicenseView';
