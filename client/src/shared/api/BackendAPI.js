@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
 const BackendAPI = Axios.create({
-  baseURL: process.env.API_URL || 'http://localhost:5000',
+  baseURL: 'https://aterwinwin-fullstack.herokuapp.com',
 });
 
 export default BackendAPI;
