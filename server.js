@@ -23,7 +23,8 @@ app.use(
       useDefaults: true,
       directives: {
         scriptSrc: ["'self' https: 'unsafe-inline'"],
-        defaultSrc: ["'self'"],
+        defaultSrc: ["'self'", 'aterwinwin-fullstack.herokuapp.com:*'],
+        connectSrc: ["'self'", 'aterwinwin-fullstack.herokuapp.com:*'],
         styleSrc: ["'self'", 'https://fonts.googleapis.com'],
         fontSrc: ["'self'", 'https://fonts.gstatic.com'],
         imgSrc: [
