@@ -16,9 +16,11 @@
 }
 
 .logo h1 {
-  font-style: italic;
+  font-size: 2.5rem;
   white-space: nowrap;
   margin: 0;
+  font-family: 'Amatic SC';
+  font-weight: 700;
 }
 
 .navList {
