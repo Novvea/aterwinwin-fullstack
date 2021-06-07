@@ -19,6 +19,15 @@ export const AddItemView = () => {
     interestedUsers: [],
     uninterestedUsers: [],
   });
+  const [disabled, setDisabled] = useState(true);
+
+  if (
+    addItemFormData.category.length > 0 &&
+    addItemFormData.name.length > 0 &&
+    addItemFormData.url.length > 0
+  ) {
+    setDisabled(false);
+  }
 
   const handleChangeImageFile = async (event) => {
     if (event.target.files) {
@@ -33,8 +42,6 @@ export const AddItemView = () => {
       }
     }
   };
-
-  console.log('addItemFormData: ', addItemFormData);
 
   const addNewItem = async () => {
     if (addItemFormData) {
@@ -117,7 +124,9 @@ export const AddItemView = () => {
             }
           />
         </div>
-        <button onClick={() => addNewItem()}>Spara</button>
+        <button type="submit" disabled={disabled} onClick={() => addNewItem()}>
+          Spara
+        </button>
       </form>
     </AppLayout>
   );
