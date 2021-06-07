@@ -7,7 +7,6 @@ import styles from './ItemCards.module.css';
 import logoimage from '../../shared/images/Logo_aterwinwin_test.jpg';
 
 export const ItemCards = () => {
-  const pathname = window?.location.pathname;
   const auth = useSelector((state) => state.auth);
 
   const logoItem = {
@@ -106,11 +105,11 @@ export const ItemCards = () => {
           </div>
         </>
       )}
-      {auth?.request?.[pathname]?.status === 'REQUEST' && <p>Laddar!!!</p>}
-      {auth?.request?.[pathname]?.status === 'SUCCESS' &&
-        auth.data &&
-        !currentItem && <p>Det finns inga fler objekt :(</p>}
-      {auth?.request?.[pathname]?.status === 'SUCCESS' && !auth.data && (
+      {auth?.request?.status === 'REQUEST' && <p>Laddar!!!</p>}
+      {auth?.request?.status === 'SUCCESS' && auth.data && !currentItem && (
+        <p>Det finns inga fler objekt :(</p>
+      )}
+      {auth?.request?.status === 'SUCCESS' && !auth.data && (
         <div className={styles.card}>
           <img
             className={styles.image}
@@ -123,9 +122,7 @@ export const ItemCards = () => {
           <div className={styles.details}>Logga in för att swipa och byta</div>
         </div>
       )}
-      {auth.request?.[pathname]?.status === 'FAILURE' && (
-        <p>Något gick fel :(</p>
-      )}
+      {auth.request?.status === 'FAILURE' && <p>Något gick fel :(</p>}
     </div>
   );
 };

@@ -8,14 +8,12 @@ import {
 } from './types';
 
 export const fetchUser = () => async (dispatch) => {
-  const pathname = window?.location.pathname || '';
   dispatch({
     type: FETCH_USER_REQUEST,
     request: {
       status: 'LOADING',
       statusCode: null,
     },
-    pathname,
   });
 
   try {
@@ -27,7 +25,6 @@ export const fetchUser = () => async (dispatch) => {
         status: 'SUCCESS',
         statusCode: response.status,
       },
-      pathname,
     });
     return Promise.resolve();
   } catch (error) {
@@ -37,7 +34,6 @@ export const fetchUser = () => async (dispatch) => {
         status: 'FAILURE',
         statusCode: error.response.status,
       },
-      pathname,
     });
   }
 };

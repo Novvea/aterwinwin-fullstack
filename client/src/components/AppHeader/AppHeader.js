@@ -4,8 +4,6 @@ import RoutingPath from '../../routes/RoutingPath';
 import styles from './AppHeader.module.css';
 
 export const AppHeader = () => {
-  const pathname = window?.location.pathname;
-
   //const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
 
@@ -18,7 +16,7 @@ export const AppHeader = () => {
           </Link>
         </div>
         <ul className={styles.navList}>
-          {auth.request?.[pathname]?.status === 'SUCCESS' && !auth.data && (
+          {auth?.request?.status === 'SUCCESS' && !auth.data && (
             <>
               <li>
                 <a href="/auth/google">Logga in</a>

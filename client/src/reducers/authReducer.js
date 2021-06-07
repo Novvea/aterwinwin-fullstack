@@ -23,7 +23,7 @@ const requestReducer = (state = null, action) => {
     case FETCH_USER_REQUEST:
     case FETCH_USER_SUCCESS:
     case FETCH_USER_FAILURE:
-      return { ...state, [action.pathname]: action.request };
+      return action.request;
     default:
       return state;
   }
