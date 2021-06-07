@@ -83,6 +83,7 @@ export const ItemCards = () => {
             <div className={styles.details}>{currentItem.category}</div>
           </div>
           <div className={styles.actions}>
+            <p>Är du intresserad av ett byte?</p>
             <div className={styles.likeButtons}>
               <button
                 className={styles.dislike}

@@ -42,6 +42,7 @@
 .actions {
   width: 100%;
   margin: 16px 0 16px 0px;
+  text-align: center;
 }
 
 .actions button,
