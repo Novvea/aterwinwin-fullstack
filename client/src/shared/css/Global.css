@@ -2,7 +2,6 @@ body {
   --primary-color: #49984c;
 
   margin: 0;
-  padding: 0 16px;
   background-color: #e9ffc6;
   color: var(--primary-color);
   font-family: 'Rambla', sans-serif;

@@ -62,73 +62,79 @@ export const AddItemView = () => {
   };
 
   return (
-    <AppLayout>
-      <h2>Lägg till objekt</h2>
-      <form className={styles.form}>
-        <div>
-          <label htmlFor="image">Bild</label>
-          <input
-            className={styles.imageUpload}
-            id="image"
-            type="file"
-            onChange={handleChangeImageFile}
-          />
-          {addItemFormData.url && (
-            <img
-              className={styles.imagePreview}
-              src={addItemFormData.url}
-              alt={addItemFormData.name}
+    <div className={styles.background}>
+      <AppLayout>
+        <h2>Lägg till objekt</h2>
+        <form className={styles.form}>
+          <div>
+            <label htmlFor="image">Bild</label>
+            <input
+              className={styles.imageUpload}
+              id="image"
+              type="file"
+              onChange={handleChangeImageFile}
             />
-          )}
-        </div>
-        <div>
-          <label htmlFor="name">Produktnamn</label>
-          <input
-            id="name"
-            type="text"
-            required
-            onChange={(event) =>
-              setAddItemFormData({
-                ...addItemFormData,
-                name: event.target.value,
-              })
-            }
-          />
-        </div>
-        <div>
-          <label htmlFor="category">Kategori</label>
-          <input
-            id="category"
-            type="text"
-            required
-            onChange={(event) =>
-              setAddItemFormData({
-                ...addItemFormData,
-                category: event.target.value,
-              })
-            }
-          />
-        </div>
-        <div>
-          <label htmlFor="position">Objektet kan hämtas från (ort)</label>
-          {/* (i framtiden: lägg till att pricka position på karta, funkar det med a11y?) */}
-          <input
-            id="position"
-            type="text"
-            required
-            onChange={(event) =>
-              setAddItemFormData({
-                ...addItemFormData,
-                position: event.target.value,
-              })
-            }
-          />
-        </div>
-        <button type="submit" disabled={disabled} onClick={() => addNewItem()}>
-          Spara
-        </button>
-      </form>
-    </AppLayout>
+            {addItemFormData.url && (
+              <img
+                className={styles.imagePreview}
+                src={addItemFormData.url}
+                alt={addItemFormData.name}
+              />
+            )}
+          </div>
+          <div>
+            <label htmlFor="name">Produktnamn</label>
+            <input
+              id="name"
+              type="text"
+              required
+              onChange={(event) =>
+                setAddItemFormData({
+                  ...addItemFormData,
+                  name: event.target.value,
+                })
+              }
+            />
+          </div>
+          <div>
+            <label htmlFor="category">Kategori</label>
+            <input
+              id="category"
+              type="text"
+              required
+              onChange={(event) =>
+                setAddItemFormData({
+                  ...addItemFormData,
+                  category: event.target.value,
+                })
+              }
+            />
+          </div>
+          <div>
+            <label htmlFor="position">Objektet kan hämtas från (ort)</label>
+            {/* (i framtiden: lägg till att pricka position på karta, funkar det med a11y?) */}
+            <input
+              id="position"
+              type="text"
+              required
+              onChange={(event) =>
+                setAddItemFormData({
+                  ...addItemFormData,
+                  position: event.target.value,
+                })
+              }
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={disabled}
+            onClick={() => addNewItem()}
+          >
+            Spara
+          </button>
+        </form>
+      </AppLayout>
+    </div>
   );
 };
 
