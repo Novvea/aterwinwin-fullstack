@@ -5,20 +5,13 @@ import BackendAPIService from '../../shared/api/service/BackendAPIService';
 import RoutingPath from '../../routes/RoutingPath';
 import styles from './ItemCards.module.css';
 import logoimage from '../../shared/images/Logo_aterwinwin_test.jpg';
+import { ItsAMatchCard } from '../ItsAMatchCard/ItsAMatchCard';
 
 export const ItemCards = () => {
   const auth = useSelector((state) => state.auth);
 
-  const logoItem = {
-    id: '000',
-    name: 'Återwinwin',
-    category: 'Swipea och byt',
-    position: 'Här och nu!',
-    url: logoimage,
-  };
-
   const [itemAPIResponse, setItemAPIResponse] = useState();
-  const [itsAMatchAPIResponse, setItsAMatchAPIResponse] = useState([]);
+  const [itsAMatchAPIResponse, setItsAMatchAPIResponse] = useState();
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
 
   useEffect(() => {
@@ -46,10 +39,7 @@ export const ItemCards = () => {
         liked_item_id: likedItem._id,
         user_id: auth.data._id,
       });
-      setItsAMatchAPIResponse(matchResponse);
-      if (matchResponse.data.matches.length) {
-        alert(`Its a match ${matchResponse.data.matches[0].name}`);
-      }
+      setItsAMatchAPIResponse(matchResponse.data);
     } catch (error) {
       console.log('Error while trying to like item');
     }
@@ -124,6 +114,9 @@ export const ItemCards = () => {
         </div>
       )}
       {auth.request?.status === 'FAILURE' && <p>Något gick fel :(</p>}
+      {itsAMatchAPIResponse && (
+        <ItsAMatchCard itsAMatch={itsAMatchAPIResponse} />
+      )}
     </div>
   );
 };
