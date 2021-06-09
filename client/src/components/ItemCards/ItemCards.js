@@ -11,8 +11,14 @@ export const ItemCards = () => {
   const auth = useSelector((state) => state.auth);
 
   const [itemAPIResponse, setItemAPIResponse] = useState();
-  const [itsAMatchAPIResponse, setItsAMatchAPIResponse] = useState();
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
+  const [itsAMatchAPIResponse, setItsAMatchAPIResponse] = useState();
+
+  const closeMatchDialog = () => {
+    console.log('bobobo');
+    setItsAMatchAPIResponse(null);
+  };
+  //const [openItsAMatchCard, setOpenItsAMatchCard] = useState(false)
 
   useEffect(() => {
     if (auth.data) {
@@ -115,7 +121,7 @@ export const ItemCards = () => {
       )}
       {auth.request?.status === 'FAILURE' && <p>Något gick fel :(</p>}
       {itsAMatchAPIResponse && (
-        <ItsAMatchCard itsAMatch={itsAMatchAPIResponse} />
+        <ItsAMatchCard match={itsAMatchAPIResponse} close={closeMatchDialog} />
       )}
     </div>
   );
