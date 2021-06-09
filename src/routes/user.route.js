@@ -2,9 +2,9 @@ const UserController = require('../controllers/User.controller');
 
 const routes = (app) => {
   app.post('/user', UserController.createUser);
-  app.get('/user', UserController.getAllUsers); //ok att använda /user pga annan metod än ovanför
+  app.get('/user', UserController.getAllUsers);
   app.get('/searchuser', UserController.getUserById);
-  app.delete('/user/:userId', UserController.deleteUser); //:userId pga params
+  app.delete('/user/:userId', UserController.deleteUser);
   app.put('/user/:userId', UserController.updateUser);
   app.get('/search', UserController.searchUsername);
 };

@@ -1,8 +1,8 @@
-const mongoose = require('mongoose'); //vår ODM
+const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 //*************************************
-//Schema for user from google
+//Schema for user from google oauth
 //*************************************
 const authUserSchema = new Schema({
   googleId: String,
@@ -13,21 +13,18 @@ const authUserSchema = new Schema({
   email: String,
 });
 
-module.exports = mongoose.model('authuser', authUserSchema); //This creates our model class
-//const UserModel = mongoose.model('users', userSchema) //This creates our model class
+module.exports = mongoose.model('authuser', authUserSchema);
 
 //*************************************
-//Schema för my own not so secure logged in user
+//Schema for my own not so secure logged in user
 //*************************************
 const userSchema2 = Schema(
   {
-    //strukturera upp hur metadatan ska se ut som ska till databasen
     email: {
-      //här kan vi lägga till flera regler
       type: String,
-      unique: true, //mongooses egen funktion, kollar att alla användarnamn är unika
+      unique: true,
       allowNull: false,
-      required: true, //anropet går inte igenom om vi inte skickar med ett användarnamn
+      required: true,
     },
     firstname: {
       type: String,
@@ -45,7 +42,7 @@ const userSchema2 = Schema(
     },
   },
   { timestamps: true }
-); //får reda på när data sparades och uppdaterades
+);
 
-const UserModel2 = mongoose.model('user', userSchema2); //This creates our model class
+const UserModel2 = mongoose.model('user', userSchema2);
 module.exports = UserModel2;

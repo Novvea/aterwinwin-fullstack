@@ -10,12 +10,10 @@ const AuthRoutes = require('./src/routes/auth.route');
 const UserRoutes = require('./src/routes/user.route');
 const ItemRoutes = require('./src/routes/item.route');
 const keys = require('./configurations/keys');
-require('./src/services/passport'); //does not work without this line
+require('./src/services/passport');
 
-//mongoose.connect ligger i Configurations.js
-
-const app = express(); //wrappar hela applikationen, kan även heta application eller server
-app.use(express.json()); //istället för body-Parser
+const app = express();
+app.use(express.json());
 app.use(cors({ credentials: true }));
 app.use(
   helmet({
@@ -39,10 +37,9 @@ app.use(
       },
     },
   })
-); //döljer viss data
-app.use(morgan('common')); //ger oss info hur och vem som gjort anropet
+);
+app.use(morgan('common'));
 
-//app.use(bodyParser.json()); //lades till vid betalningsavsnittet
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000, //=30 days
@@ -65,7 +62,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.use(Middlewares.notFound); //det sista som körs om den inte hittar någon matchning
+app.use(Middlewares.notFound);
 app.use(Middlewares.errorHandler);
 
 Configurations.connectToDatabase();

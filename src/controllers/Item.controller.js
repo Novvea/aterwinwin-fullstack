@@ -1,24 +1,20 @@
-//här skriver vi logiken som talar om vad som händer när vi gör ett anrop
 const ItemModel = require('../models/Item.model');
 
-//async await pga att mongoose måste koppla upp sig tyill databasen, vi väntar tills processen är färdig innan vi gör något annat
 const addItem = async (request, response) => {
-  //request = den data som skickas till anropet, response är det servern svarar med
   const item = new ItemModel({
-    name: request.body.name, //ska peka på den data som ska skickas till servern
+    name: request.body.name,
     category: request.body.category,
     position: request.body.position,
     url: request.body.url,
-    _user: request.body._user, //the id comes from mongoose and mongodb
+    _user: request.body._user,
     interestedUsers: request.body.interestedUsers,
     unInterestedUsers: request.body.unInterestedUsers,
   });
   try {
-    const databaseResponse = await item.save(); //spara data som skickas till servern i databasen
-    response.status(201).send(databaseResponse); //om det går som planerat vill vi tala om det, vi skickar tillbaka ett svar från servern och datan
+    const databaseResponse = await item.save();
+    response.status(201).send(databaseResponse);
   } catch (error) {
     response.status(500).send({
-      //men nådde i alla fall fram till servern
       message: 'Error while trying to add item',
       stack: error,
     });
@@ -68,9 +64,8 @@ const getLikedItems = async (request, response) => {
 };
 
 const deleteItem = async (request, response) => {
+  const itemId = request.params.itemId;
   try {
-    const itemId = request.params.itemId;
-
     const databaseResponse = await ItemModel.findByIdAndDelete(itemId); //ska hitta en vara baserat på id och sedan deleta
     response
       .status(200)
@@ -84,7 +79,6 @@ const deleteItem = async (request, response) => {
 
 const userLikedItem = async (request, response) => {
   const { liked_item_id, user_id } = request.body;
-
   try {
     const likedItemResponse = await ItemModel.findOneAndUpdate(
       { _id: liked_item_id },
@@ -111,7 +105,6 @@ const userLikedItem = async (request, response) => {
 const updateUserLikedItem = async (request, response) => {
   const { update_item_id } = request.body;
   const { user_id } = request.body;
-
   try {
     const databaseResponse = await ItemModel.findOneAndUpdate(
       { _id: update_item_id },

@@ -3,10 +3,10 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose');
 const keys = require('../../configurations/keys');
 
-const AuthUser = mongoose.model('authuser'); //user-class declaration
+const AuthUser = mongoose.model('authuser');
 
 passport.serializeUser((authuser, done) => {
-  done(null, authuser.id); //id created by mongodb, not the profile-id
+  done(null, authuser.id);
 });
 
 passport.deserializeUser((id, done) => {
