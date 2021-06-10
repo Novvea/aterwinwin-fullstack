@@ -1,0 +1,13 @@
+.container {
+  position: fixed;
+  z-index: 1;
+  width: 30%;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  background-color: #fff5ee;
+}
+
+.button {
+}

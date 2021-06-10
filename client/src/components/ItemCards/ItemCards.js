@@ -5,20 +5,14 @@ import BackendAPIService from '../../shared/api/service/BackendAPIService';
 import RoutingPath from '../../routes/RoutingPath';
 import styles from './ItemCards.module.css';
 import logoimage from '../../shared/images/Logo_aterwinwin_test.jpg';
-import { ItsAMatchCard } from '../ItsAMatchCard/ItsAMatchCard';
+import { Dialog } from '../Dialog/Dialog';
 
 export const ItemCards = () => {
   const auth = useSelector((state) => state.auth);
 
   const [itemAPIResponse, setItemAPIResponse] = useState();
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
-  const [itsAMatchAPIResponse, setItsAMatchAPIResponse] = useState();
-
-  const closeMatchDialog = () => {
-    console.log('bobobo');
-    setItsAMatchAPIResponse(null);
-  };
-  //const [openItsAMatchCard, setOpenItsAMatchCard] = useState(false)
+  const [itsAMatch, setItsAMatch] = useState();
 
   useEffect(() => {
     if (auth.data) {
@@ -27,6 +21,10 @@ export const ItemCards = () => {
   }, [auth.data]);
 
   const currentItem = itemAPIResponse?.[currentItemIndex];
+
+  const closeDialog = () => {
+    setItsAMatch(null);
+  };
 
   const getAllItems = async () => {
     try {
@@ -39,15 +37,16 @@ export const ItemCards = () => {
   };
 
   const userLikedItem = async (likedItem) => {
-    setCurrentItemIndex(currentItemIndex + 1);
     try {
       const matchResponse = await BackendAPIService.userLikedItem({
         liked_item_id: likedItem._id,
         user_id: auth.data._id,
       });
-      setItsAMatchAPIResponse(matchResponse.data);
+      setItsAMatch(matchResponse.data);
+      setCurrentItemIndex(currentItemIndex + 1);
     } catch (error) {
       console.log('Error while trying to like item');
+      setCurrentItemIndex(currentItemIndex + 1);
     }
   };
 
@@ -120,8 +119,16 @@ export const ItemCards = () => {
         </div>
       )}
       {auth.request?.status === 'FAILURE' && <p>Något gick fel :(</p>}
-      {itsAMatchAPIResponse && (
-        <ItsAMatchCard match={itsAMatchAPIResponse} close={closeMatchDialog} />
+      {itsAMatch && (
+        <Dialog close={closeDialog}>
+          <h1>Det har blivit en match!</h1>
+          <p>En person vill gärna byta sin</p>
+          <h2>{itsAMatch.likedItem}</h2>
+          <p>mot följande:</p>
+          {itsAMatch.matches.map((item) => (
+            <h2>{item.name}</h2>
+          ))}
+        </Dialog>
       )}
     </div>
   );
