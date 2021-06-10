@@ -92,7 +92,9 @@ const userLikedItem = async (request, response) => {
     response.status(200).send({
       message: 'Liked items array was updated',
       matches: matchResponse,
-      likedItem: likedItemResponse.name,
+      likedItemName: likedItemResponse.name,
+      likedItemUrl: likedItemResponse.url,
+      likedItemId: likedItemResponse._id,
     });
   } catch (error) {
     response.status(500).send({

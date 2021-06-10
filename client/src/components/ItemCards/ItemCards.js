@@ -122,12 +122,36 @@ export const ItemCards = () => {
       {itsAMatch && (
         <Dialog close={closeDialog}>
           <h1>Det har blivit en match!</h1>
-          <p>En person vill gärna byta sin</p>
-          <h2>{itsAMatch.likedItem}</h2>
+          <p>En person vill gärna byta</p>
+          <ul className={styles.matchItemList}>
+            <li className={styles.matchItemCard} key={itsAMatch.likedItemId}>
+              <img
+                className={styles.matchItemImage}
+                src={itsAMatch.likedItemUrl}
+                width={100}
+                height={100}
+                alt={itsAMatch.likedItemName}
+              />
+              <h4 className={styles.matchItemName}>
+                {itsAMatch.likedItemName}
+              </h4>
+            </li>
+          </ul>
           <p>mot följande:</p>
-          {itsAMatch.matches.map((item) => (
-            <h2>{item.name}</h2>
-          ))}
+          <ul className={styles.matchItemList}>
+            {itsAMatch.matches.map((item, index) => (
+              <li className={styles.matchItemCard} key={index}>
+                <img
+                  className={styles.matchItemImage}
+                  src={item.url}
+                  width={100}
+                  height={100}
+                  alt={item.name}
+                />
+                <h4 className={styles.matchItemName}>{item.name}</h4>
+              </li>
+            ))}
+          </ul>
         </Dialog>
       )}
     </div>

@@ -121,3 +121,33 @@
 .addItem:active {
   background: rgb(102, 170, 105, 0.5);
 }
+
+.matchItemList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 12px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.matchItemCard {
+  display: flex;
+  flex-direction: column;
+  background: #fff5ee;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 8px 32px 0 #66aa69;
+  text-align: center;
+  color: #333;
+}
+
+.matchItemImage {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.matchItemName {
+  margin: 0;
+}
