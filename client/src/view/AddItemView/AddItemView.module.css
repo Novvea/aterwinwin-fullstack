@@ -49,11 +49,9 @@
   transform: translateY(2px);
 }
 
-/*
 .form button:disabled {
-  background-color: #999;
+  background: rgb(163, 172, 165);
 }
-*/
 
 .imageUpload {
   background: rgb(102, 170, 105, 0.25);

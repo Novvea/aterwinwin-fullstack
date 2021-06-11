@@ -21,14 +21,6 @@ export const AddItemView = () => {
   });
   const [disabled, setDisabled] = useState(true);
 
-  if (
-    addItemFormData.category.length > 0 &&
-    addItemFormData.name.length > 0 &&
-    addItemFormData.url.length > 0
-  ) {
-    setDisabled(false);
-  }
-
   const handleChangeImageFile = async (event) => {
     if (event.target.files) {
       try {
@@ -36,6 +28,7 @@ export const AddItemView = () => {
           event.target.files
         );
         setAddItemFormData({ ...addItemFormData, url: response.data.url });
+        setDisabled(false);
         console.log('response.data :', response.data);
       } catch (error) {
         console.log(error);
