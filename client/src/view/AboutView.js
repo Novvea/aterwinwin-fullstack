@@ -12,6 +12,15 @@ export const AboutView = () => (
       och byt saker, så kan vi alla bli vinnare, eller snarare återvinnare!
     </p>
     <p>
+      Tanken är att du lägger upp saker som du inte längre vill ha. Det finns
+      säkert något där hemma som du har kvar trots att du inte använder det. Du
+      vill kanske inte slänga det, men samtidigt är det inte riktigt värt
+      besväret att sälja det. Varför då inte byta det mot något som du faktiskt
+      behöver eller vill ha? Swipa bland andras saker och säg om du är
+      intresserad eller inte. Visar det sig sedan att du vill ha något av någon
+      som vill ha något av dig så blir det en match!
+    </p>
+    <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce faucibus
       diam at tortor scelerisque, viverra eleifend leo porta. Florentin qualiste
       domingo ad est.
