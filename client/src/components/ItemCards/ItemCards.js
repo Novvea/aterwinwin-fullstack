@@ -118,8 +118,8 @@ export const ItemCards = () => {
           <div className={styles.details}>Logga in för att swipa och byta</div>
         </div>
       )}
-      {auth.request?.status === 'FAILURE' && <p>Något gick fel :(</p>}
-      {itsAMatch && (
+      {auth?.request?.status === 'FAILURE' && <p>Något gick fel :(</p>}
+      {itsAMatch?.matches.length > 0 && (
         <Dialog close={closeDialog}>
           <h1>Det har blivit en match!</h1>
           <p>En person vill gärna byta</p>
