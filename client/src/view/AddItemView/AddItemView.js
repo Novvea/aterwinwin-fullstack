@@ -36,7 +36,9 @@ export const AddItemView = () => {
     }
   };
 
-  const addNewItem = async () => {
+  const addNewItem = async (event) => {
+    event.preventDefault();
+
     if (addItemFormData) {
       console.log('we should have an owner with _id: ', addItemFormData._user);
       try {
@@ -118,11 +120,7 @@ export const AddItemView = () => {
               }
             />
           </div>
-          <button
-            type="submit"
-            disabled={disabled}
-            onClick={() => addNewItem()}
-          >
+          <button type="submit" disabled={disabled} onClick={addNewItem}>
             Spara
           </button>
         </form>
