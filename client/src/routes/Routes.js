@@ -8,6 +8,7 @@ import { AddItemView } from '../view/AddItemView/AddItemView';
 import { ProfileView } from '../view/ProfileView/ProfileView';
 import { SettingsView } from '../view/SettingsView';
 import { LicenseView } from '../view/LicenseView';
+import { JobbView } from '../view/JobbView';
 
 export const Routes = (props) => {
   const { children } = props;
@@ -24,6 +25,7 @@ export const Routes = (props) => {
         <Route exact path={RoutingPath.profileView} component={ProfileView} />
         <Route exact path={RoutingPath.settingsView} component={SettingsView} />
         <Route exact path={RoutingPath.licenseView} component={LicenseView} />
+        <Route exact path={RoutingPath.jobbView} component={JobbView} />
         <Route component={HomeView} />{' '}
       </Switch>
     </BrowserRouter>

@@ -3,9 +3,13 @@ import AppLayout from '../components/AppLayout/AppLayout';
 export const AboutView = () => (
   <AppLayout>
     <h2>Om Återwin-win</h2>
-    <p>
+    {/*     <p>
       Your old crap can be exactly what somebody else wishes for and vice versa,
       so let´s get those things moving and all of you can be återvinners!{' '}
+    </p> */}
+    <p>
+      Ditt gamla skräp kan vara någon annans skatt och vice versa, så kom igen
+      och byt saker, så kan vi alla bli vinnare, eller snarare återvinnare!
     </p>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce faucibus

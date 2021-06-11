@@ -4,6 +4,7 @@ const loginView = '/login';
 const registerView = '/signup';
 const addItemView = '/additem';
 const licenseView = '/license';
+const jobbView = '/jobb';
 
 //Authenticated views:
 const settingsView = '/settings';
@@ -19,4 +20,5 @@ export default {
   profileView,
   addItemView,
   licenseView,
+  jobbView,
 };

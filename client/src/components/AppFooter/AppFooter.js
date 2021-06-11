@@ -13,8 +13,11 @@ export const AppFooter = () => {
           <li>
             <Link to={RoutingPath.licenseView}>Användarvillkor</Link>
           </li>
-          <li>
+          {/*           <li>
             <a href="https://github.com/Novvea">Jobb</a>
+          </li> */}
+          <li>
+            <Link to={RoutingPath.jobbView}>Jobb</Link>
           </li>
         </ul>
       </nav>
