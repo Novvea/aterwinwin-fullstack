@@ -18,21 +18,11 @@ export const AboutView = () => (
       besväret att sälja det. Varför då inte byta det mot något som du faktiskt
       behöver eller vill ha? Swipa bland andras saker och säg om du är
       intresserad eller inte. Visar det sig sedan att du vill ha något av någon
-      som vill ha något av dig så blir det en match!
+      annan som också vill ha något av dig så blir det en match!
     </p>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce faucibus
-      diam at tortor scelerisque, viverra eleifend leo porta. Florentin qualiste
-      domingo ad est.
-    </p>
-    <p>
-      Adiste pharetra enim sit amet mauris luctus. Nullam elementum odio vitae
-      magna commodo tempor. Quisque tempor sapien cursus ligula dignissim.
-    </p>
-    <p>
-      Etiam ornare nisi luctus mauris interdum, eget vulputate nunc dictum.
-      Proin risus quam, luctus porttitor bibendum et, consectetur vel dui. Justo
-      ut arcu, at euismod purus sodales.
+      I nuvarande stund kan du tyvärr endast logga in om du har ett
+      Google-konto.
     </p>
   </AppLayout>
 );
