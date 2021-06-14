@@ -16,7 +16,7 @@ export const AddItemView = () => {
     category: '',
     position: '',
     url: '',
-    interestedUsers: [],
+    interestedUsers: ['60c702833f26da0015f101a0'], //for DEMO-purpose only
     uninterestedUsers: [],
   });
   const [disabled, setDisabled] = useState(true);
