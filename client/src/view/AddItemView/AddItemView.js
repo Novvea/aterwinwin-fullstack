@@ -29,7 +29,6 @@ export const AddItemView = () => {
         );
         setAddItemFormData({ ...addItemFormData, url: response.data.url });
         setDisabled(false);
-        console.log('response.data :', response.data);
       } catch (error) {
         console.log(error);
       }
@@ -40,7 +39,6 @@ export const AddItemView = () => {
     event.preventDefault();
 
     if (addItemFormData) {
-      console.log('we should have an owner with _id: ', addItemFormData._user);
       try {
         await BackendAPIService.addItem({
           ...addItemFormData,

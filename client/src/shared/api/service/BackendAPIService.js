@@ -9,7 +9,6 @@ const getAllUsers = () => {
 };
 
 const addItem = (data) => {
-  console.log('data:', data);
   return http.post('/item', data);
 };
 

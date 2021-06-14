@@ -25,7 +25,6 @@ export const ProfileView = () => {
         auth.data._id
       );
       setItemAPIResponse(itemsResponse.data);
-      console.log('My items were fetched from server');
     } catch (error) {
       console.log('errormessage: ', error);
     }
@@ -49,7 +48,6 @@ export const ProfileView = () => {
         update_item_id: item._id,
         user_id: auth.data._id,
       });
-      console.log('I do no longer like this item');
     } catch (error) {
       console.log('errormessage: ', error);
     }
