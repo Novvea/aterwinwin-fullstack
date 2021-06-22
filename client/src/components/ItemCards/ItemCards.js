@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import BackendAPIService from '../../shared/api/service/BackendAPIService';
 import RoutingPath from '../../routes/RoutingPath';
 import styles from './ItemCards.module.css';
-import logoimage from '../../shared/images/Logo_aterwinwin_test.jpg';
+//import logoimage from '../../shared/images/Logo_aterwinwin_test.jpg';
+import logo from '../../shared/images/logo.svg';
 import { Dialog } from '../Dialog/Dialog';
 
 export const ItemCards = () => {
@@ -109,7 +110,7 @@ export const ItemCards = () => {
         <div className={styles.card}>
           <img
             className={styles.image}
-            src={logoimage}
+            src={logo}
             width={512}
             height={512}
             alt="Återwinwin"
